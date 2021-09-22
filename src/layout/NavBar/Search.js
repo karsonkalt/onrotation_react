@@ -7,7 +7,7 @@ import {
 
 function Search() {
   return (
-    <div style={{ width: "400px" }}>
+    <div style={{ width: "450px", minWidth: "200px" }}>
       <InputGroup>
         <FormControl placeholder="Search" style={{ width: "2 rem" }} />
 
@@ -17,9 +17,9 @@ function Search() {
           id="input-group-dropdown-2"
           align="end"
         >
-          <Dropdown.Item href="#">DJs</Dropdown.Item>
           <Dropdown.Item href="#">Tracklists</Dropdown.Item>
           <Dropdown.Item href="#">Tracks</Dropdown.Item>
+          <Dropdown.Item href="#">Artists</Dropdown.Item>
         </DropdownButton>
       </InputGroup>
     </div>

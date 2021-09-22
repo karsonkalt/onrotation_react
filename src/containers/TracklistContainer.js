@@ -19,27 +19,33 @@ class TracklistContainer extends Component {
           {/* <Card.Header>Recently Added</Card.Header> */}
           <Card.Body>
             <Card.Title>{item}</Card.Title>
-            <Card.Subtitle className="mb-2 text-muted">
-              <Row>
-                <Col>
-                  <PersonFill className="ml-2" />
-                  Guy J
-                </Col>
-                <Col>
-                  <CalendarFill className="ml-2" />
-                  January 15, 2018
-                </Col>
-              </Row>
+            <Card.Subtitle
+              className="mb-2 text-muted"
+              style={{ display: "flex" }}
+            >
+              <div className="me-3">
+                <PersonFill className="me-1" />
+                Guy J
+              </div>
+              <div className="me-3">
+                <CalendarFill className="me-1" />
+                January 15, 2018
+              </div>
             </Card.Subtitle>
-            <ProgressBar
-              now={60}
-              style={{ height: ".25rem" }}
-              variant="warning"
-            />
-            <CheckCircleFill fill="#ffc107" className="mr-2" />
-            <Badge bg="warning">6/12 Tracks ID'd</Badge>
+            <div style={{ display: "flex" }} className="align-items-center">
+              <ProgressBar
+                now={60}
+                style={{ height: ".25rem", width: "100%" }}
+                variant="warning"
+                className="me-3"
+              />
+              <div style={{ display: "flex" }}>
+                <CheckCircleFill fill="#ffc107" className="me-3" />
+                <Badge bg="secondary">6/12 Tracks ID'd</Badge>
+              </div>
+            </div>
           </Card.Body>
-          <Card.Footer className="text-muted fs-6">
+          <Card.Footer className="text-muted" style={{ fontSize: "10px" }}>
             added 2 days ago by username
           </Card.Footer>
         </Card>
