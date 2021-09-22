@@ -8,7 +8,14 @@ import {
   Col,
   NavDropdown,
   Badge,
+  FloatingLabel,
+  OverlayTrigger,
+  Popover,
+  Card,
+  ListGroup,
 } from "react-bootstrap";
+
+import { BookmarkFill, MusicNote, MusicNoteList } from "react-bootstrap-icons";
 
 function NavBar() {
   return (
@@ -29,12 +36,7 @@ function NavBar() {
                 placeholder="Search"
                 aria-label="Recipient's username with two button addons"
               />
-              <Form.Select
-                aria-label="Default select example"
-                fluid="auto"
-                width="10px"
-              >
-                <option>Select</option>
+              <Form.Select xs="auto" aria-label="Default select example">
                 <option value="1">DJs</option>
                 <option value="2">Tracklists</option>
                 <option value="3">Tracks</option>
@@ -45,7 +47,43 @@ function NavBar() {
           <Col xs="auto">
             <Nav>
               <Nav.Link href="#notifications">
-                <Badge bg="primary">10</Badge>
+                <OverlayTrigger
+                  trigger="click"
+                  placement="bottom"
+                  overlay={
+                    <Popover className="shadow-lg">
+                      <Popover.Header as="h3">{`Notifications`}</Popover.Header>
+                      <Popover.Body style={{ padding: "0" }}>
+                        <ListGroup variant="flush">
+                          <ListGroup.Item action>
+                            <Badge bg="primary">
+                              <MusicNote />
+                            </Badge>
+                            Track 2 on Guy Mantzur Live at Teton's has been ID'd
+                          </ListGroup.Item>
+                          <ListGroup.Item action>
+                            <Badge bg="primary">
+                              <MusicNoteList />
+                            </Badge>
+                            Track 19 on Navar ECHOS 003 has been ID'd
+                          </ListGroup.Item>
+                          <ListGroup.Item action>
+                            <Badge bg="primary">
+                              <MusicNoteList />
+                            </Badge>
+                            Track 1 on Above and Beyond Essential Mix has been
+                            ID'd
+                          </ListGroup.Item>
+                        </ListGroup>
+                      </Popover.Body>
+                    </Popover>
+                  }
+                >
+                  <Badge bg="primary">
+                    <BookmarkFill />
+                    10
+                  </Badge>
+                </OverlayTrigger>
               </Nav.Link>
               <NavDropdown title="Username" className="d-flex flex-row-reverse">
                 <NavDropdown.Item href="#profile">Profile</NavDropdown.Item>
@@ -55,7 +93,6 @@ function NavBar() {
           </Col>
         </Container>
       </Navbar>
-      <div style={{ height: "65px" }} className="spacer"></div>
     </>
   );
 }
