@@ -2,7 +2,7 @@ import { Component } from "react";
 import { Card, Row, Col, Container, ProgressBar, Badge } from "react-bootstrap";
 import {
   PersonFill,
-  CalendarFill,
+  CalendarEvent,
   CheckCircleFill,
 } from "react-bootstrap-icons";
 
@@ -23,12 +23,18 @@ class TracklistContainer extends Component {
               className="mb-2 text-muted"
               style={{ display: "flex" }}
             >
-              <div className="me-3">
+              <div
+                className="me-3 align-items-center"
+                style={{ display: "flex" }}
+              >
                 <PersonFill className="me-1" />
                 Guy J
               </div>
-              <div className="me-3">
-                <CalendarFill className="me-1" />
+              <div
+                className="me-3 align-items-center"
+                style={{ display: "flex" }}
+              >
+                <CalendarEvent className="me-1" />
                 January 15, 2018
               </div>
             </Card.Subtitle>
@@ -41,7 +47,9 @@ class TracklistContainer extends Component {
               />
               <div style={{ display: "flex" }}>
                 <CheckCircleFill fill="#ffc107" className="me-3" />
-                <Badge bg="secondary">6/12 Tracks ID'd</Badge>
+                <Badge bg="light" text="secondary">
+                  6/12 Tracks ID'd
+                </Badge>
               </div>
             </div>
           </Card.Body>
