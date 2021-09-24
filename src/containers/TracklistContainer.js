@@ -1,68 +1,120 @@
 import { Component } from "react";
-import { Card, Row, Col, Container, ProgressBar, Badge } from "react-bootstrap";
-import {
-  PersonFill,
-  CalendarEvent,
-  CheckCircleFill,
-} from "react-bootstrap-icons";
+import { Container } from "react-bootstrap";
+import Tracklist from "../components/Tracklist";
 
 class TracklistContainer extends Component {
+  data = [
+    {
+      name: "Live at UMF Radio",
+      datePlayed: "2021-8-25",
+      artist: "Guy J",
+      creator: "karsonkalt",
+      dateCreated: "June 15, 2021",
+      numIdentifiedTracks: 12,
+      numTotalTracks: 12,
+    },
+    {
+      name: "Live at Stella Polaris Frederiskberg, Denmark",
+      datePlayed: "2021-8-7",
+      artist: "Guy J",
+      creator: "bradbeakes",
+      dateCreated: "August 20, 2021",
+      numIdentifiedTracks: 23,
+      numTotalTracks: 24,
+    },
+    {
+      name: "Lost & Found Presents Echos 043",
+      datePlayed: "2021-3-25",
+      artist: "Khen",
+      creator: "justin",
+      dateCreated: "September 23, 2021",
+      numIdentifiedTracks: 19,
+      numTotalTracks: 21,
+    },
+    {
+      name: "Live at UMF Radio",
+      datePlayed: "2021-8-25",
+      artist: "Guy J",
+      creator: "karsonkalt",
+      dateCreated: "June 15, 2021",
+      numIdentifiedTracks: 12,
+      numTotalTracks: 12,
+    },
+    {
+      name: "Live at Stella Polaris Frederiskberg, Denmark",
+      datePlayed: "2021-8-7",
+      artist: "Guy J",
+      creator: "bradbeakes",
+      dateCreated: "August 20, 2021",
+      numIdentifiedTracks: 23,
+      numTotalTracks: 24,
+    },
+    {
+      name: "Lost & Found Presents Echos 043",
+      datePlayed: "2021-3-25",
+      artist: "Khen",
+      creator: "justin",
+      dateCreated: "September 23, 2021",
+      numIdentifiedTracks: 17,
+      numTotalTracks: 17,
+    },
+    {
+      name: "Live at UMF Radio",
+      datePlayed: "2021-8-25",
+      artist: "Guy J",
+      creator: "karsonkalt",
+      dateCreated: "June 15, 2021",
+      numIdentifiedTracks: 22,
+      numTotalTracks: 23,
+    },
+    {
+      name: "Live at Stella Polaris Frederiskberg, Denmark",
+      datePlayed: "2021-8-7",
+      artist: "Guy J",
+      creator: "bradbeakes",
+      dateCreated: "August 20, 2021",
+      numIdentifiedTracks: 29,
+      numTotalTracks: 31,
+    },
+    {
+      name: "Lost & Found Presents Echos 043",
+      datePlayed: "2021-3-25",
+      artist: "Khen",
+      creator: "justin",
+      dateCreated: "September 23, 2021",
+      numIdentifiedTracks: 5,
+      numTotalTracks: 21,
+    },
+  ];
+
   renderTracklists = () => {
-    return [
-      "Guy J Live at Echos",
-      "Navar at This Place",
-      "Someone else at this place",
-      "Guy Mantzur Live at Echos 002",
-    ].map((item, index) => {
-      return (
-        <Card key={index} className="mb-4 shadow-sm">
-          {/* <Card.Header>Recently Added</Card.Header> */}
-          <Card.Body>
-            <Card.Title>{item}</Card.Title>
-            <Card.Subtitle
-              className="mb-2 text-muted"
-              style={{ display: "flex" }}
-            >
-              <div
-                className="me-3 align-items-center"
-                style={{ display: "flex" }}
-              >
-                <PersonFill className="me-1" />
-                Guy J
-              </div>
-              <div
-                className="me-3 align-items-center"
-                style={{ display: "flex" }}
-              >
-                <CalendarEvent className="me-1" />
-                January 15, 2018
-              </div>
-            </Card.Subtitle>
-            <div style={{ display: "flex" }} className="align-items-center">
-              <ProgressBar
-                now={60}
-                style={{ height: ".25rem", width: "100%" }}
-                variant="warning"
-                className="me-3"
-              />
-              <div style={{ display: "flex" }}>
-                <CheckCircleFill fill="#ffc107" className="me-3" />
-                <Badge bg="light" text="secondary">
-                  6/12 Tracks ID'd
-                </Badge>
-              </div>
-            </div>
-          </Card.Body>
-          <Card.Footer className="text-muted" style={{ fontSize: "10px" }}>
-            added 2 days ago by username
-          </Card.Footer>
-        </Card>
-      );
-    });
+    return this.data.map(
+      ({
+        name,
+        artist,
+        datePlayed,
+        creator,
+        dateCreated,
+        numIdentifiedTracks,
+        numTotalTracks,
+      }) => {
+        return (
+          <Tracklist
+            name={name}
+            artist={artist}
+            datePlayed={datePlayed}
+            creator={creator}
+            dateCreated={dateCreated}
+            numIdentifiedTracks={numIdentifiedTracks}
+            numTotalTracks={numTotalTracks}
+          />
+        );
+      }
+    );
   };
 
   render() {
-    return <Container>{this.renderTracklists()}</Container>;
+    return this.renderTracklists();
   }
 }
 

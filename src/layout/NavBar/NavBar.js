@@ -11,11 +11,11 @@ function NavBar() {
       className="justify-content-between px-5 shadow-sm"
     >
       <div style={{ display: "flex" }}>
-        <Navbar.Brand href="#home">OnRotation</Navbar.Brand>
+        <Navbar.Brand href="/">OnRotation</Navbar.Brand>
 
         <Nav className="me-3">
-          <Nav.Link href="#tracklists">Tracklists</Nav.Link>
-          <Nav.Link href="#tracks">Tracks</Nav.Link>
+          <Nav.Link href="/tracklists">Tracklists</Nav.Link>
+          <Nav.Link href="/tracks">Tracks</Nav.Link>
         </Nav>
       </div>
 
