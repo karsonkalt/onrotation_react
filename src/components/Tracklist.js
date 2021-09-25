@@ -14,7 +14,9 @@ class Tracklist extends Component {
       <Card className="mb-4 shadow-sm">
         {/* <Card.Header>Recently Added</Card.Header> */}
         <Card.Body>
-          <Card.Title>{this.props.name}</Card.Title>
+          <a href={`/tracklists/${this.props.id}`}>
+            <Card.Title>{this.props.name}</Card.Title>
+          </a>
           <Card.Subtitle
             className="mb-2 text-muted"
             style={{ display: "flex" }}

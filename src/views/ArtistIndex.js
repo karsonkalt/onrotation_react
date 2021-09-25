@@ -2,9 +2,8 @@ import { Component } from "react";
 import { Container, Button, Col, Alert, Row } from "react-bootstrap";
 import Tracklist from "../components/Tracklist";
 import TracklistContainer from "../containers/TracklistContainer";
-import tracklists from "../data";
 
-class TracklistIndex extends Component {
+class ArtistIndex extends Component {
   search = () => {
     return this.props.location.search.substring(1);
   };
@@ -12,11 +11,10 @@ class TracklistIndex extends Component {
   render() {
     return (
       <>
-        <h4>Tracklist Index {this.search()}</h4>
-        <TracklistContainer tracklists={tracklists} />
+        <h4>Artist Index {this.search()}</h4>
       </>
     );
   }
 }
 
-export default TracklistIndex;
+export default ArtistIndex;
