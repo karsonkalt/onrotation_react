@@ -21,8 +21,12 @@ class Tracklist extends Component {
             className="mb-2 text-muted"
             style={{ display: "flex" }}
           >
-            <IconText icon="Person" text={this.props.artist} />
-            <IconText icon="CalendarEvent" text={this.props.datePlayed} />
+            <IconText icon="Person" text={this.props.artist} className="me-3" />
+            <IconText
+              icon="CalendarEvent"
+              text={this.props.datePlayed}
+              className="me-3"
+            />
           </Card.Subtitle>
           <TracklistCompletionBar
             numIdentifiedTracks={this.props.numIdentifiedTracks}

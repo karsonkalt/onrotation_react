@@ -11,8 +11,6 @@ import NotificationBadge from "./NotificationBadge";
 
 import IconText from "../global/IconText";
 
-import { BookmarkStar, MusicNote, MusicNoteList } from "react-bootstrap-icons";
-
 function NotificationButton() {
   return (
     <Nav.Link>
