@@ -4,7 +4,16 @@ import Track from "../components/Track";
 class TrackContainer extends Component {
   renderTracks = () => {
     return this.props.tracks.map(
-      ({ name, artist, label, order, cueTime, identifier, id }) => {
+      ({
+        name,
+        artist,
+        label,
+        order,
+        cueTime,
+        identifier,
+        id,
+        suggestedTrackIdentification,
+      }) => {
         return (
           <Track
             name={name}
@@ -14,6 +23,7 @@ class TrackContainer extends Component {
             cueTime={cueTime}
             order={order}
             id={id}
+            suggestedTrackIdentification={suggestedTrackIdentification}
           />
         );
       }

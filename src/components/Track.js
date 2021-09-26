@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { Card, Button } from "react-bootstrap";
 import IconText from "../layout/global/IconText";
+import SuggestedTrackIdentification from "./SuggestedTrackIdentification";
 
 class Track extends Component {
   // daysAgo = () => {
@@ -25,6 +26,14 @@ class Track extends Component {
       <Button className="me-3" variant="outline-secondary" size="sm">
         ID
       </Button>
+    ) : null;
+  };
+
+  suggestedTrackIdentification = () => {
+    return this.props.suggestedTrackIdentification ? (
+      <SuggestedTrackIdentification
+        {...this.props.suggestedTrackIdentification}
+      />
     ) : null;
   };
 
@@ -85,6 +94,7 @@ class Track extends Component {
             {this.bookmarkButton()}
           </div>
         </div>
+        {this.suggestedTrackIdentification()}
         <Card.Footer className="text-muted" style={{ fontSize: "10px" }}>
           {/* Change to Days Ago! */}
           ID'd by {this.props.identifier}

@@ -6,6 +6,9 @@ import {
   Vinyl,
   MusicNote,
   MusicNoteList,
+  Lightbulb,
+  CheckCircleFill,
+  XCircleFill,
 } from "react-bootstrap-icons";
 
 class IconText extends Component {
@@ -13,6 +16,9 @@ class IconText extends Component {
     switch (icon) {
       case "CalendarEvent":
         return <CalendarEvent className={`me-1 ${this.props.iconPadding}`} />;
+
+      case "CheckCircleFill":
+        return <CheckCircleFill className={`me-1 ${this.props.iconPadding}`} />;
 
       case "Vinyl":
         return <Vinyl className={`me-1 ${this.props.iconPadding}`} />;
@@ -28,6 +34,12 @@ class IconText extends Component {
 
       case "Bookmark":
         return <Bookmark className={`me-1 ${this.props.iconPadding}`} />;
+
+      case "XCircleFill":
+        return <XCircleFill className={`me-1 ${this.props.iconPadding}`} />;
+
+      case "Lightbulb":
+        return <Lightbulb className={`me-1 ${this.props.iconPadding}`} />;
 
       default:
         return null;
