@@ -2,13 +2,9 @@ import { Component } from "react";
 import { Card } from "react-bootstrap";
 import TracklistCompletionBar from "../components/TracklistCompletionBar";
 import IconText from "../layout/global/IconText";
+import TimeAgo from "react-timeago";
 
 class Tracklist extends Component {
-  // daysAgo = () => {
-  //   const timeAgo = new TimeAgo("en-US");
-  //   return timeAgo.format(new Date() - Date.parse(this.props.dateCreated));
-  // };
-
   render() {
     return (
       <Card className="mb-4 shadow-sm">
@@ -35,7 +31,8 @@ class Tracklist extends Component {
         </Card.Body>
         <Card.Footer className="text-muted" style={{ fontSize: "10px" }}>
           {/* Change to Days Ago! */}
-          added {this.props.dateCreated} by {this.props.creator}
+          added <TimeAgo date={this.props.dateCreated} /> by{" "}
+          {this.props.creator}
         </Card.Footer>
       </Card>
     );
