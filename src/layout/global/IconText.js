@@ -12,22 +12,22 @@ class IconText extends Component {
   selectIcon = (icon) => {
     switch (icon) {
       case "CalendarEvent":
-        return <CalendarEvent className="me-1" />;
+        return <CalendarEvent className={`me-1 ${this.props.iconPadding}`} />;
 
       case "Vinyl":
-        return <Vinyl className="me-1" />;
+        return <Vinyl className={`me-1 ${this.props.iconPadding}`} />;
 
       case "MusicNote":
-        return <MusicNote className="me-1" />;
+        return <MusicNote className={`me-1 ${this.props.iconPadding}`} />;
 
       case "MusicNoteList":
-        return <MusicNoteList className="me-1" />;
+        return <MusicNoteList className={`me-1 ${this.props.iconPadding}`} />;
 
       case "Person":
-        return <Person className="me-1" />;
+        return <Person className={`me-1 ${this.props.iconPadding}`} />;
 
       case "Bookmark":
-        return <Bookmark className="me-1" />;
+        return <Bookmark className={`me-1 ${this.props.iconPadding}`} />;
 
       default:
         return null;

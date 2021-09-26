@@ -1,6 +1,5 @@
 import { Component } from "react";
 import { Card, Button } from "react-bootstrap";
-import TracklistCompletionBar from "../components/TracklistCompletionBar";
 import IconText from "../layout/global/IconText";
 
 class Track extends Component {
@@ -14,7 +13,7 @@ class Track extends Component {
   };
 
   displayArtist = () => {
-    return this.props.artist ? this.props.artist : "ID";
+    return this.props.artist ? this.props.artist : "Unknown Artist";
   };
 
   displayLabel = () => {
@@ -55,7 +54,7 @@ class Track extends Component {
       <Card className={"mb-4 shadow-sm"}>
         <div className="align-items-center" style={{ display: "flex" }}>
           <div
-            className="m-4"
+            className="m-3"
             style={{ display: "flex", flexDirection: "column" }}
           >
             <h4>{this.props.order}</h4>

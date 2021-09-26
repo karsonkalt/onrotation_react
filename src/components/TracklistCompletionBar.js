@@ -19,7 +19,10 @@ class TracklistCompletionBar extends Component {
 
   render() {
     return (
-      <div style={{ display: "flex" }} className="align-items-center">
+      <div
+        style={{ display: "flex" }}
+        className={`align-items-center ${this.props.className}`}
+      >
         <ProgressBar
           now={this.percentage * 100}
           style={{ height: ".25rem", width: "100%" }}
