@@ -1,17 +1,19 @@
-.alert-enter {
-  opacity: 0;
-  transform: scale(0.9);
+.clickable-header {
+  text-decoration: none;
+  color: #494949;
 }
-.alert-enter-active {
-  opacity: 1;
-  transform: translateX(0);
-  transition: opacity 300ms, transform 300ms;
+
+.clickable-header:hover {
+  text-decoration: underline;
+  color: #274f9b;
 }
-.alert-exit {
-  opacity: 1;
+
+.clickable-subheader {
+  text-decoration: none;
+  color: #7a7a7a;
 }
-.alert-exit-active {
-  opacity: 0;
-  transform: scale(0.9);
-  transition: opacity 300ms, transform 300ms;
+
+.clickable-subheader:hover {
+  text-decoration: underline;
+  color: #274f9b;
 }

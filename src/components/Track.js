@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { Card, Button } from "react-bootstrap";
+import { Card, Button, Badge } from "react-bootstrap";
 import IconText from "../layout/global/IconText";
 import SuggestedTrackIdentification from "./SuggestedTrackIdentification";
 
@@ -10,21 +10,47 @@ class Track extends Component {
   // };
 
   displayName = () => {
-    return this.props.name ? this.props.name : "ID";
+    return this.props.name ? (
+      <a href={`/tracks/${this.props.id}`} className="clickable-header">
+        <Card.Title>{this.props.name}</Card.Title>
+      </a>
+    ) : (
+      <Card.Title>
+        <Badge bg="secondary" className="me-3">
+          Unknown Track
+        </Badge>
+      </Card.Title>
+    );
   };
 
   displayArtist = () => {
-    return this.props.artist ? this.props.artist : "Unknown Artist";
+    return this.props.artist ? (
+      <a href={`/artists/${this.props.id}`} className="clickable-subheader">
+        <IconText icon="Person" text={this.props.artist} className="me-3" />
+      </a>
+    ) : (
+      <Badge bg="secondary" className="me-3">
+        Unknown Artist
+      </Badge>
+    );
   };
 
   displayLabel = () => {
-    return this.props.label ? this.props.label : "Unreleased";
+    return this.props.label ? (
+      <a href={`/labels/${this.props.id}`} className="clickable-subheader">
+        <IconText icon="Vinyl" text={this.props.label} className="me-3" />
+      </a>
+    ) : (
+      <Badge bg="secondary" className="me-3">
+        Unreleased
+      </Badge>
+    );
   };
 
   idButton = () => {
     return this.props.name == null ? (
       <Button className="me-3" variant="outline-secondary" size="sm">
-        ID
+        <IconText icon="Lightbulb" text="Identify Track" />
       </Button>
     ) : null;
   };
@@ -70,23 +96,13 @@ class Track extends Component {
             <h6>{this.props.cueTime}</h6>
           </div>
           <Card.Body>
-            <a href={`/tracks/${this.props.id}`}>
-              <Card.Title>{this.displayName()}</Card.Title>
-            </a>
+            {this.displayName()}
             <Card.Subtitle
               className="mb-2 text-muted"
               style={{ display: "flex" }}
             >
-              <IconText
-                icon="Person"
-                text={this.displayArtist()}
-                className="me-3"
-              />
-              <IconText
-                icon="Vinyl"
-                text={this.displayLabel()}
-                className="me-3"
-              />
+              {this.displayArtist()}
+              {this.displayLabel()}
             </Card.Subtitle>
           </Card.Body>
           <div>

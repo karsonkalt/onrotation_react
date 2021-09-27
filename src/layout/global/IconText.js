@@ -9,6 +9,7 @@ import {
   Lightbulb,
   CheckCircleFill,
   XCircleFill,
+  PencilSquare,
 } from "react-bootstrap-icons";
 
 class IconText extends Component {
@@ -16,6 +17,9 @@ class IconText extends Component {
     switch (icon) {
       case "CalendarEvent":
         return <CalendarEvent className={`me-1 ${this.props.iconPadding}`} />;
+
+      case "PencilSquare":
+        return <PencilSquare className={`me-1 ${this.props.iconPadding}`} />;
 
       case "CheckCircleFill":
         return <CheckCircleFill className={`me-1 ${this.props.iconPadding}`} />;

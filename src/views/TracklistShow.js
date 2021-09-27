@@ -3,6 +3,7 @@ import TrackContainer from "../containers/TrackContainer";
 import tracks from "../trackData";
 import IconText from "../layout/global/IconText";
 import TracklistCompletionBar from "../components/TracklistCompletionBar";
+import SoundCloudPlayer from "../components/SoundCloudPlayer";
 
 class TracklistShow extends Component {
   render() {
@@ -24,6 +25,7 @@ class TracklistShow extends Component {
           numTotalTracks={24}
           className="mb-3"
         />
+        <SoundCloudPlayer />
         <TrackContainer tracks={tracks} />
       </>
     );
