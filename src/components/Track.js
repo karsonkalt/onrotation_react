@@ -154,13 +154,15 @@ class Track extends Component {
   render() {
     return (
       <Card className={"mb-4 shadow-sm"}>
-        <div className="align-items-center" style={{ display: "flex" }}>
+        <div className="d-flex align-items-center ">
           <div
-            className="m-3"
-            style={{ display: "flex", flexDirection: "column" }}
+            className="m-3 mt-0 me-0 d-flex align-items-start "
+            style={{ flexDirection: "column", width: "50px" }}
           >
-            <h4>{this.props.order}</h4>
-            <h6>{this.props.cueTime}</h6>
+            <h4 className="mb-0">{this.props.order}</h4>
+            <span style={{ fontSize: "12px", color: "grey" }}>
+              {this.props.cueTime}
+            </span>
           </div>
           <Card.Body>
             {this.displayName()}

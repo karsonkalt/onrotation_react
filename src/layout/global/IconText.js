@@ -12,6 +12,7 @@ import {
   PencilSquare,
   Bell,
   LightbulbOff,
+  Clock,
 } from "react-bootstrap-icons";
 
 class IconText extends Component {
@@ -25,6 +26,9 @@ class IconText extends Component {
 
       case "Bell":
         return <Bell className={`me-1 ${this.props.iconPadding}`} />;
+
+      case "Clock":
+        return <Clock className={`me-1 ${this.props.iconPadding}`} />;
 
       case "CheckCircleFill":
         return <CheckCircleFill className={`me-1 ${this.props.iconPadding}`} />;
