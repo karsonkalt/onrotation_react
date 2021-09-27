@@ -2,12 +2,18 @@ import { Component } from "react";
 import { Card, Button, Badge } from "react-bootstrap";
 import IconText from "../layout/global/IconText";
 import SuggestedTrackIdentification from "./SuggestedTrackIdentification";
+import CreateSuggestedTrackIdentificationForm from "./CreateSuggestedTrackIdentificationForm";
 
 class Track extends Component {
   // daysAgo = () => {
   //   const timeAgo = new TimeAgo("en-US");
   //   return timeAgo.format(new Date() - Date.parse(this.props.dateCreated));
   // };
+
+  state = {
+    showForm: false,
+    bookmarked: false,
+  };
 
   displayName = () => {
     return this.props.name ? (
@@ -56,9 +62,15 @@ class Track extends Component {
   };
 
   idButton = () => {
-    return this.props.name == null ? (
-      <Button className="me-3" variant="outline-secondary" size="sm">
-        <IconText icon="Lightbulb" text="Identify Track" />
+    return this.props.name == null &&
+      this.props.suggestedTrackIdentification == null ? (
+      <Button
+        className="me-3"
+        variant="outline-secondary"
+        size="sm"
+        onClick={this.handleIdentifyClick}
+      >
+        <IconText icon="Lightbulb" text="Identify" />
       </Button>
     ) : null;
   };
@@ -88,8 +100,14 @@ class Track extends Component {
     debugger;
   };
 
-  handleIdClick = () => {
-    debugger;
+  handleIdentifyClick = () => {
+    this.setState({ showForm: !this.state.showForm });
+  };
+
+  showCreateSuggestedTrackIdentificationForm = () => {
+    return this.state.showForm ? (
+      <CreateSuggestedTrackIdentificationForm />
+    ) : null;
   };
 
   render() {
@@ -119,6 +137,7 @@ class Track extends Component {
           </div>
         </div>
         {this.suggestedTrackIdentification()}
+        {this.showCreateSuggestedTrackIdentificationForm()}
         <Card.Footer className="text-muted" style={{ fontSize: "10px" }}>
           {/* Change to Days Ago! */}
           ID'd by {this.props.identifier}

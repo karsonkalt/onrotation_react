@@ -10,6 +10,7 @@ import {
   CheckCircleFill,
   XCircleFill,
   PencilSquare,
+  Bell,
 } from "react-bootstrap-icons";
 
 class IconText extends Component {
@@ -20,6 +21,9 @@ class IconText extends Component {
 
       case "PencilSquare":
         return <PencilSquare className={`me-1 ${this.props.iconPadding}`} />;
+
+      case "Bell":
+        return <Bell className={`me-1 ${this.props.iconPadding}`} />;
 
       case "CheckCircleFill":
         return <CheckCircleFill className={`me-1 ${this.props.iconPadding}`} />;
