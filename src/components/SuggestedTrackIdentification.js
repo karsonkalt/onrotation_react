@@ -39,7 +39,7 @@ class SuggestedTrackIdentification extends Component {
           </div>
           <div style={{ display: "flex" }}>
             <div className="flex-column" style={{ display: "flex" }}>
-              <Button className="me-3" variant="outline-success" size="sm">
+              <Button className="me-3" variant="success" size="sm">
                 <IconText icon="CheckCircleFill" text="Correct" />
               </Button>
               <span style={{ fontSize: "10px" }} className="text-success">
@@ -48,7 +48,7 @@ class SuggestedTrackIdentification extends Component {
               </span>
             </div>
             <div className="flex-column" style={{ display: "flex" }}>
-              <Button variant="outline-danger" size="sm">
+              <Button variant="danger" size="sm">
                 <IconText icon="XCircleFill" text="Incorrect" />
               </Button>
               <span style={{ fontSize: "10px" }} className="text-danger">

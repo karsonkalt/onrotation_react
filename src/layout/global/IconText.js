@@ -11,6 +11,7 @@ import {
   XCircleFill,
   PencilSquare,
   Bell,
+  LightbulbOff,
 } from "react-bootstrap-icons";
 
 class IconText extends Component {
@@ -48,6 +49,9 @@ class IconText extends Component {
 
       case "Lightbulb":
         return <Lightbulb className={`me-1 ${this.props.iconPadding}`} />;
+
+      case "LightbulbOff":
+        return <LightbulbOff className={`me-1 ${this.props.iconPadding}`} />;
 
       default:
         return null;

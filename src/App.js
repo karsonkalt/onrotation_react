@@ -62,7 +62,7 @@ function App() {
               <Route
                 exact
                 path="/artists"
-                render={(routerProps) => <ArtistIndex {...routerProps} />}
+                render={(routerProps) => <ArtistIndex />}
               />
               <Route
                 exact
@@ -72,7 +72,7 @@ function App() {
               <Route
                 exact
                 path="/users"
-                render={(routerProps) => <UserIndex {...routerProps} />}
+                render={(routerProps) => <UserIndex />}
               />
               <Route
                 exact

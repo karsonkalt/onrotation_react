@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { Card, Button, Badge } from "react-bootstrap";
+import { Card, Button, Badge, OverlayTrigger, Tooltip } from "react-bootstrap";
 import IconText from "../layout/global/IconText";
 import SuggestedTrackIdentification from "./SuggestedTrackIdentification";
 import CreateSuggestedTrackIdentificationForm from "./CreateSuggestedTrackIdentificationForm";
@@ -63,17 +63,42 @@ class Track extends Component {
   };
 
   idButton = () => {
-    return this.props.name == null &&
-      this.props.suggestedTrackIdentification == null ? (
-      <Button
-        className="me-3"
-        variant="outline-secondary"
-        size="sm"
-        onClick={this.handleIdentifyClick}
-      >
-        <IconText icon="Lightbulb" text="Identify" />
-      </Button>
-    ) : null;
+    if (this.props.suggestedTrackIdentification) {
+      return (
+        <OverlayTrigger
+          key="left"
+          placement="left"
+          overlay={
+            <Tooltip id="tooltip-left">
+              Suggested track identification must be resolved before suggesting
+              new identification.
+            </Tooltip>
+          }
+        >
+          <span>
+            <Button
+              className="me-3"
+              variant="outline-secondary"
+              size="sm"
+              disabled
+            >
+              <IconText icon="LightbulbOff" text="Identify" />
+            </Button>
+          </span>
+        </OverlayTrigger>
+      );
+    } else if (this.props.name == null) {
+      return (
+        <Button
+          className="me-3"
+          variant="outline-secondary"
+          size="sm"
+          onClick={this.handleIdentifyClick}
+        >
+          <IconText icon="Lightbulb" text="Identify" />
+        </Button>
+      );
+    }
   };
 
   suggestedTrackIdentification = () => {
