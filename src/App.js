@@ -1,12 +1,23 @@
 import { Alert, Button, Container, Row, Col } from "react-bootstrap";
+
 import NavBar from "./layout/NavBar/NavBar";
+
 import Home from "./views/Home";
+
 import TracklistIndex from "./views/TracklistIndex";
 import TracklistShow from "./views/TracklistShow";
+
 import TrackIndex from "./views/TrackIndex";
+import TrackShow from "./views/TrackShow";
+
 import ArtistIndex from "./views/ArtistIndex";
+import ArtistShow from "./views/ArtistShow";
+
+import UserIndex from "./views/UserIndex";
 import UserShow from "./views/UserShow";
+
 import Settings from "./views/Settings";
+
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import { CSSTransition } from "react-transition-group";
@@ -45,10 +56,29 @@ function App() {
               />
               <Route
                 exact
+                path="/tracks/:id"
+                render={(routerProps) => <TrackShow {...routerProps} />}
+              />
+              <Route
+                exact
                 path="/artists"
                 render={(routerProps) => <ArtistIndex {...routerProps} />}
               />
-              <Route exact path="/profile" render={() => <UserShow />} />
+              <Route
+                exact
+                path="/artists/:id"
+                render={(routerProps) => <ArtistShow {...routerProps} />}
+              />
+              <Route
+                exact
+                path="/users"
+                render={(routerProps) => <UserIndex {...routerProps} />}
+              />
+              <Route
+                exact
+                path="/users/:id"
+                render={(routerProps) => <UserShow {...routerProps} />}
+              />
               <Route exact path="/settings" render={() => <Settings />} />
             </>
             {/* </CSSTransition> */}

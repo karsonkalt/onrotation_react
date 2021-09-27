@@ -3,14 +3,15 @@ import Tracklist from "../components/Tracklist";
 import { Component } from "react";
 import TracklistContainer from "../containers/TracklistContainer";
 
-class TrackIndex extends Component {
+class TrackShow extends Component {
   render() {
+    debugger;
     return (
       <>
-        <h4>Track Index</h4>
+        <h4>Track Show {this.props.match.params.id}</h4>
       </>
     );
   }
 }
 
-export default TrackIndex;
+export default TrackShow;

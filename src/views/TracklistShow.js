@@ -16,9 +16,15 @@ class TracklistShow extends Component {
             text={`Tracklist Show ${this.props.match.params.id}`}
           />
         </h4>
-        <h6>
-          <IconText icon="Person" text="Artist" />
-          <IconText icon="CalendarEvent" text="June 14, 2012" />
+        <h6 className="mb-2 text-muted" style={{ display: "flex" }}>
+          <a href={`/artists/${this.props.id}`} className="clickable-subheader">
+            <IconText icon="Person" text="Artist" className="me-3" />
+          </a>
+          <IconText
+            icon="CalendarEvent"
+            text="June 14, 2012"
+            className="me-3"
+          />
         </h6>
         <TracklistCompletionBar
           numIdentifiedTracks={18}

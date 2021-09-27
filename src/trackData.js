@@ -2,7 +2,7 @@ const tracks = [
   {
     id: 14,
     order: 1,
-    identifier: "karsonkalt",
+    identifier: null,
     cueTime: "00:00",
     name: null,
     artist: null,
@@ -11,7 +11,7 @@ const tracks = [
   {
     id: 10,
     order: 2,
-    identifier: "karsonkalt",
+    identifier: null,
     cueTime: "03:10",
     name: null,
     artist: "Eli Nissan",
@@ -20,7 +20,8 @@ const tracks = [
   {
     id: 149,
     order: 3,
-    identifier: "karsonkalt",
+    identifier: null,
+    identifiedDate: null,
     cueTime: "07:30",
     name: null,
     artist: null,
@@ -39,16 +40,24 @@ const tracks = [
   {
     id: 1,
     order: 4,
-    identifier: "karsonkalt",
+    identifier: {
+      id: 1,
+      name: "patrickthealba",
+    },
     cueTime: "15:30",
     name: "Fangtango",
     artist: "Matthew Dekay",
     label: "Maeve",
+    identifiedDate: "07-12-2021",
   },
   {
     id: 20,
     order: 5,
-    identifier: "karsonkalt",
+    identifier: {
+      id: 2,
+      name: "bradbeakes",
+    },
+    identifiedDate: "07-01-2021",
     cueTime: null,
     name: "Sunflakes (Bronzed Re-Edit)",
     artist: "Khen",
@@ -57,7 +66,11 @@ const tracks = [
   {
     id: 25,
     order: 6,
-    identifier: "karsonkalt",
+    identifier: {
+      id: 1,
+      name: "patrickthealba",
+    },
+    identifiedDate: "07-12-2021",
     cueTime: "21:23",
     name: "The Charm",
     artist: "Guy J",
@@ -66,7 +79,11 @@ const tracks = [
   {
     id: 29,
     order: 7,
-    identifier: "karsonkalt",
+    identifier: {
+      id: 1,
+      name: "patrickthealba",
+    },
+    identifiedDate: "07-12-2021",
     cueTime: "25:31",
     name: "Girl's Laugh",
     artist: "Serge Devant",
@@ -75,7 +92,11 @@ const tracks = [
   {
     id: 141,
     order: 8,
-    identifier: "karsonkalt",
+    identifier: {
+      id: 3,
+      name: "karsonkalt",
+    },
+    identifiedDate: "07-12-2021",
     cueTime: "29:12",
     name: "Maple",
     artist: "Khen",
@@ -84,7 +105,8 @@ const tracks = [
   {
     id: 145,
     order: 9,
-    identifier: "karsonkalt",
+    identifier: null,
+    identifiedDate: null,
     cueTime: null,
     name: null,
     artist: "Roy Rosenfeld",

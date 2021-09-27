@@ -13,6 +13,7 @@ class TrackContainer extends Component {
         identifier,
         id,
         suggestedTrackIdentification,
+        identifiedDate,
       }) => {
         return (
           <Track
@@ -24,6 +25,7 @@ class TrackContainer extends Component {
             order={order}
             id={id}
             suggestedTrackIdentification={suggestedTrackIdentification}
+            identifiedDate={identifiedDate}
           />
         );
       }

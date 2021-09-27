@@ -3,6 +3,7 @@ import { Card, Button, Badge } from "react-bootstrap";
 import IconText from "../layout/global/IconText";
 import SuggestedTrackIdentification from "./SuggestedTrackIdentification";
 import CreateSuggestedTrackIdentificationForm from "./CreateSuggestedTrackIdentificationForm";
+import TimeAgo from "react-timeago";
 
 class Track extends Component {
   // daysAgo = () => {
@@ -96,6 +97,21 @@ class Track extends Component {
     ) : null;
   };
 
+  identificationFooter = () => {
+    return this.props.identifier ? (
+      <Card.Footer className="text-muted" style={{ fontSize: "10px" }}>
+        {/* Change to Days Ago! */}
+        identified <TimeAgo date={this.props.identifiedDate} /> by{" "}
+        <a
+          href={`/users/${this.props.identifier.id}`}
+          className="clickable-subheader"
+        >
+          {this.props.identifier.name}
+        </a>
+      </Card.Footer>
+    ) : null;
+  };
+
   handleBookmarkClick = () => {
     debugger;
   };
@@ -138,10 +154,7 @@ class Track extends Component {
         </div>
         {this.suggestedTrackIdentification()}
         {this.showCreateSuggestedTrackIdentificationForm()}
-        <Card.Footer className="text-muted" style={{ fontSize: "10px" }}>
-          {/* Change to Days Ago! */}
-          ID'd by {this.props.identifier}
-        </Card.Footer>
+        {this.identificationFooter()}
       </Card>
     );
   }
