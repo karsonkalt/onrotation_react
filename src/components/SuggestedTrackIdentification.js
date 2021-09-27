@@ -7,13 +7,19 @@ class SuggestedTrackIdentification extends Component {
     this.props.suggestedTrackIdentificationVotes.voteCount -
     this.props.suggestedTrackIdentificationVotes.voteCountCorrect;
 
+  displayArtist = () => {
+    return this.props.suggestedArtist ? (
+      <IconText icon="Person" text={this.props.suggestedArtist} />
+    ) : null;
+  };
+
   render() {
     return (
       <div
         className="ms-3 me-3 mb-3 p-3 bg-warning border rounded border-warning "
         style={{ "--bs-bg-opacity": 0.1, color: "#c7941c" }}
       >
-        <span style={{ fontSize: "10px" }}>
+        <span style={{ fontSize: "12px" }}>
           <IconText
             icon="Lightbulb"
             text={`Suggested Track Identification by ${this.props.identifier}`}
@@ -29,7 +35,7 @@ class SuggestedTrackIdentification extends Component {
               text={this.props.suggestedName}
               className="me-3"
             />
-            <IconText icon="Person" text={this.props.suggestedArtist} />
+            {this.displayArtist()}
           </div>
           <div style={{ display: "flex" }}>
             <div className="flex-column" style={{ display: "flex" }}>
