@@ -17,3 +17,17 @@
   text-decoration: underline;
   color: #274f9b;
 }
+
+.missing-info {
+  display: inline-block;
+  padding: 0.35em 0.65em;
+  font-size: 0.75em;
+  font-weight: 400;
+  line-height: 1;
+  color: #949494;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+  border: 1px dotted #c4c4c4;
+}

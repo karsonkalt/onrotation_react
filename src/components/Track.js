@@ -12,13 +12,17 @@ class Track extends Component {
   displayName = () => {
     return this.props.name ? (
       <a href={`/tracks/${this.props.id}`} className="clickable-header">
-        <Card.Title>{this.props.name}</Card.Title>
+        <Card.Title>
+          <IconText icon="MusicNote" text={this.props.name} className="me-3" />
+        </Card.Title>
       </a>
     ) : (
       <Card.Title>
-        <Badge bg="secondary" className="me-3">
-          Unknown Track
-        </Badge>
+        <IconText
+          icon="MusicNote"
+          text={<span className="missing-info me-3">Unknown Track</span>}
+          className="me-3"
+        />
       </Card.Title>
     );
   };
@@ -29,9 +33,11 @@ class Track extends Component {
         <IconText icon="Person" text={this.props.artist} className="me-3" />
       </a>
     ) : (
-      <Badge bg="secondary" className="me-3">
-        Unknown Artist
-      </Badge>
+      <IconText
+        icon="Person"
+        text={<span className="missing-info">Unknown Artist</span>}
+        className="me-3"
+      />
     );
   };
 
@@ -41,9 +47,11 @@ class Track extends Component {
         <IconText icon="Vinyl" text={this.props.label} className="me-3" />
       </a>
     ) : (
-      <Badge bg="secondary" className="me-3">
-        Unreleased
-      </Badge>
+      <IconText
+        icon="Vinyl"
+        text={<span className="missing-info">Unreleased</span>}
+        className="me-3"
+      />
     );
   };
 
