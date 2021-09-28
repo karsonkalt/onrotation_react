@@ -3,10 +3,18 @@ import TrackContainer from "../containers/TrackContainer";
 import tracks from "../trackData";
 import IconText from "../layout/global/IconText";
 import TracklistCompletionBar from "../components/TracklistCompletionBar";
-import SoundCloudPlayer from "../components/SoundCloudPlayer";
+import VideoPlayer from "../components/VideoPlayer";
 import { Button } from "react-bootstrap";
 
 class TracklistShow extends Component {
+  state = {
+    playedSeconds: "0",
+  };
+
+  handleNowPlaying = ({ playedSeconds }) => {
+    this.setState({ playedSeconds: playedSeconds });
+  };
+
   render() {
     return (
       <>
@@ -44,8 +52,14 @@ class TracklistShow extends Component {
           numTotalTracks={24}
           className="mb-3"
         />
-        <SoundCloudPlayer />
-        <TrackContainer tracks={tracks} />
+        <VideoPlayer
+          url="https://www.youtube.com/watch?v=4xFM5vG59sk&feature=emb_title&ab_channel=Lost%26Found%2FGuyJ"
+          onProgress={this.handleNowPlaying}
+        />
+        <TrackContainer
+          tracks={tracks}
+          playedSeconds={this.state.playedSeconds}
+        />
       </>
     );
   }

@@ -31,3 +31,14 @@
   border-radius: 0.25rem;
   border: 1px dotted #c4c4c4;
 }
+
+.player-wrapper {
+  position: relative;
+  /* padding-top: 56.25%; Player ratio: 100 / (1280 / 720) */
+}
+
+.react-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+}

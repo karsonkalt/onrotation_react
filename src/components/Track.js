@@ -4,6 +4,7 @@ import IconText from "../layout/global/IconText";
 import SuggestedTrackIdentification from "./SuggestedTrackIdentification";
 import CreateSuggestedTrackIdentificationForm from "./CreateSuggestedTrackIdentificationForm";
 import TimeAgo from "react-timeago";
+import timeToSeconds from "time-to-seconds";
 
 class Track extends Component {
   // daysAgo = () => {
@@ -60,6 +61,15 @@ class Track extends Component {
         className="me-3"
       />
     );
+  };
+
+  displayCueTime = () => {
+    return this.props.cueTime ? (
+      <span style={{ fontSize: "12px", color: "grey" }}>
+        {this.props.cueTime}
+        {this.displayPlayIndicator()}
+      </span>
+    ) : null;
   };
 
   idButton = () => {
@@ -122,6 +132,21 @@ class Track extends Component {
     ) : null;
   };
 
+  displayPlayIndicator = () => {
+    if (
+      this.props.playedSeconds > timeToSeconds(this.props.cueTime) &&
+      this.props.playedSeconds < timeToSeconds(this.props.endTime)
+    ) {
+      return (
+        <span style={{ color: "orange" }}>
+          <IconText icon="CheckCircleFill" text="NowPlaying" />
+        </span>
+      );
+    } else if (this.props.playedSeconds > timeToSeconds(this.props.cueTime)) {
+      return <IconText icon="CheckCircleFill" text="Played" />;
+    }
+  };
+
   identificationFooter = () => {
     return this.props.identifier ? (
       <Card.Footer className="text-muted" style={{ fontSize: "10px" }}>
@@ -160,9 +185,7 @@ class Track extends Component {
             style={{ flexDirection: "column", width: "50px" }}
           >
             <h4 className="mb-0">{this.props.order}</h4>
-            <span style={{ fontSize: "12px", color: "grey" }}>
-              {this.props.cueTime}
-            </span>
+            {this.displayCueTime()}
           </div>
           <Card.Body>
             {this.displayName()}
