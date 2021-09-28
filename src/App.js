@@ -49,9 +49,7 @@ function App() {
               <Route
                 exact
                 path="/tracks"
-                render={(routerProps) => (
-                  <TrackIndex id={routerProps.match.params.id} />
-                )}
+                render={(routerProps) => <TrackIndex {...routerProps} />}
               />
 
               <Route
@@ -62,7 +60,7 @@ function App() {
               <Route
                 exact
                 path="/artists"
-                render={(routerProps) => <ArtistIndex />}
+                render={(routerProps) => <ArtistIndex {...routerProps} />}
               />
               <Route
                 exact
@@ -72,7 +70,7 @@ function App() {
               <Route
                 exact
                 path="/users"
-                render={(routerProps) => <UserIndex />}
+                render={(routerProps) => <UserIndex {...routerProps} />}
               />
               <Route
                 exact
