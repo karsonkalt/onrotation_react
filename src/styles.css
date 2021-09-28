@@ -1,6 +1,7 @@
 .clickable-header {
   text-decoration: none;
   color: #494949;
+  transition: color 0.1s;
 }
 
 .clickable-header:hover {
@@ -11,6 +12,7 @@
 .clickable-subheader {
   text-decoration: none;
   color: #7a7a7a;
+  transition: color 0.1s;
 }
 
 .clickable-subheader:hover {
@@ -41,4 +43,16 @@
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.playable {
+  transition: border-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+}
+
+.now-playing {
+  box-shadow: 0px 4px 15px 5px rgba(64, 90, 255, 0.18);
+}
+
+.highlight {
+  color: rgba(64, 90, 255, 1);
 }

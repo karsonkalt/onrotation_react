@@ -8,11 +8,15 @@ import {
   MusicNoteList,
   Lightbulb,
   CheckCircleFill,
+  Check,
   XCircleFill,
   PencilSquare,
   Bell,
   LightbulbOff,
   Clock,
+  PlayFill,
+  PersonSquare,
+  PlusCircleFill,
 } from "react-bootstrap-icons";
 
 class IconText extends Component {
@@ -24,6 +28,12 @@ class IconText extends Component {
       case "PencilSquare":
         return <PencilSquare className={`me-1 ${this.props.iconPadding}`} />;
 
+      case "PersonSquare":
+        return <PersonSquare className={`me-1 ${this.props.iconPadding}`} />;
+
+      case "PlusCircleFill":
+        return <PlusCircleFill className={`me-1 ${this.props.iconPadding}`} />;
+
       case "Bell":
         return <Bell className={`me-1 ${this.props.iconPadding}`} />;
 
@@ -32,6 +42,12 @@ class IconText extends Component {
 
       case "CheckCircleFill":
         return <CheckCircleFill className={`me-1 ${this.props.iconPadding}`} />;
+
+      case "Check":
+        return <Check className={`me-1 ${this.props.iconPadding}`} />;
+
+      case "PlayFill":
+        return <PlayFill className={`me-1 ${this.props.iconPadding}`} />;
 
       case "Vinyl":
         return <Vinyl className={`me-1 ${this.props.iconPadding}`} />;

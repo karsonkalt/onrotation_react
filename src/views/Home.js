@@ -1,7 +1,5 @@
-import { Container, Button, Col, Alert, Row } from "react-bootstrap";
-import Tracklist from "../components/Tracklist";
 import TracklistContainer from "../containers/TracklistContainer";
-import tracklists from "../data";
+import tracklists from "../data/data";
 
 function Home() {
   return (

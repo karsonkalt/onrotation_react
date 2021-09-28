@@ -1,8 +1,7 @@
 import { Component } from "react";
-import TrackContainer from "../containers/TrackContainer";
-import tracks from "../trackData";
-import IconText from "../layout/global/IconText";
-import TracklistCompletionBar from "../components/TracklistCompletionBar";
+import tracklists from "../../data/data";
+import IconText from "../../layout/global/IconText";
+import TracklistContainer from "../../containers/TracklistContainer";
 import { Button } from "react-bootstrap";
 
 class TrackShow extends Component {
@@ -33,7 +32,10 @@ class TrackShow extends Component {
             </Button>
           </div>
         </div>
-        <div>List all tracklists here</div>
+        <div className="mt-3">
+          <h5>Played In</h5>
+          <TracklistContainer tracklists={tracklists} />
+        </div>
       </>
     );
   }

@@ -4,7 +4,7 @@ import Search from "./Search";
 import NotificationButton from "./NotificationButton";
 import UserDropdown from "./UserDropdown";
 
-import notificationData from "../../notificationData";
+import notificationData from "../../data/notificationData";
 
 class NavBar extends Component {
   render() {

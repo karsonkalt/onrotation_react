@@ -1,26 +1,24 @@
-import { Alert, Button, Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 
 import NavBar from "./layout/NavBar/NavBar";
 
 import Home from "./views/Home";
 
-import TracklistIndex from "./views/TracklistIndex";
-import TracklistShow from "./views/TracklistShow";
+import TracklistIndex from "./views/Tracklist/TracklistIndex";
+import TracklistShow from "./views/Tracklist/TracklistShow";
+import TracklistNew from "./views/Tracklist/TracklistNew";
 
-import TrackIndex from "./views/TrackIndex";
-import TrackShow from "./views/TrackShow";
+import TrackIndex from "./views/Track/TrackIndex";
+import TrackShow from "./views/Track/TrackShow";
 
-import ArtistIndex from "./views/ArtistIndex";
-import ArtistShow from "./views/ArtistShow";
+import ArtistIndex from "./views/Artist/ArtistIndex";
+import ArtistShow from "./views/Artist/ArtistShow";
 
-import UserIndex from "./views/UserIndex";
-import UserShow from "./views/UserShow";
+import UserIndex from "./views/User/UserIndex";
+import UserShow from "./views/User/UserShow";
 
-import Settings from "./views/Settings";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import { BrowserRouter as Router, Route } from "react-router-dom";
-
-import { CSSTransition } from "react-transition-group";
 import "./styles.css";
 
 function App() {
@@ -31,16 +29,17 @@ function App() {
         <Col />
         <Col sm={8} m={6} style={{ paddingTop: "85px" }}>
           <Router>
-            {/* <CSSTransition
-              classNames="alert"
-              timeout={{ enter: 500, exit: 300 }}
-            > */}
-            <>
+            <Switch>
               <Route exact path="/" render={() => <Home />} />
               <Route
                 exact
                 path="/tracklists"
                 render={(routerProps) => <TracklistIndex {...routerProps} />}
+              />
+              <Route
+                exact
+                path="/tracklists/new"
+                render={(routerProps) => <TracklistNew {...routerProps} />}
               />
               <Route
                 exact
@@ -54,6 +53,7 @@ function App() {
                   <TrackIndex id={routerProps.match.params.id} />
                 )}
               />
+
               <Route
                 exact
                 path="/tracks/:id"
@@ -79,9 +79,7 @@ function App() {
                 path="/users/:id"
                 render={(routerProps) => <UserShow {...routerProps} />}
               />
-              <Route exact path="/settings" render={() => <Settings />} />
-            </>
-            {/* </CSSTransition> */}
+            </Switch>
           </Router>
         </Col>
         <Col />
@@ -91,12 +89,3 @@ function App() {
 }
 
 export default App;
-
-{
-  /* <Route
-  path="/movies"
-  render={(routerProps) => (
-    <MoviesPage {...routerProps} movies={this.state.movies} />
-  )}
-/> */
-}

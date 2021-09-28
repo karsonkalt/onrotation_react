@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { Card, Button, Badge, OverlayTrigger, Tooltip } from "react-bootstrap";
+import { Card, Button, OverlayTrigger, Tooltip } from "react-bootstrap";
 import IconText from "../layout/global/IconText";
 import SuggestedTrackIdentification from "./SuggestedTrackIdentification";
 import CreateSuggestedTrackIdentificationForm from "./CreateSuggestedTrackIdentificationForm";
@@ -19,7 +19,10 @@ class Track extends Component {
 
   displayName = () => {
     return this.props.name ? (
-      <a href={`/tracks/${this.props.id}`} className="clickable-header">
+      <a
+        href={`/tracks/${this.props.id}`}
+        className={`clickable-header ${this.nowPlayingTextClasses()}`}
+      >
         <Card.Title>
           <IconText icon="MusicNote" text={this.props.name} className="me-3" />
         </Card.Title>
@@ -132,18 +135,42 @@ class Track extends Component {
     ) : null;
   };
 
-  displayPlayIndicator = () => {
-    if (
-      this.props.playedSeconds > timeToSeconds(this.props.cueTime) &&
+  isPlaying = () => {
+    return (
+      this.props.playedSeconds >= timeToSeconds(this.props.cueTime) &&
       this.props.playedSeconds < timeToSeconds(this.props.endTime)
-    ) {
+    );
+  };
+
+  hasPlayed = () => {
+    return this.props.playedSeconds > timeToSeconds(this.props.endTime);
+  };
+
+  displayPlayIndicator = () => {
+    if (this.isPlaying()) {
       return (
-        <span style={{ color: "orange" }}>
-          <IconText icon="CheckCircleFill" text="NowPlaying" />
+        <span className="text-primary">
+          <IconText icon="PlayFill" text="Playing" />
         </span>
       );
-    } else if (this.props.playedSeconds > timeToSeconds(this.props.cueTime)) {
-      return <IconText icon="CheckCircleFill" text="Played" />;
+    } else if (this.hasPlayed()) {
+      return <IconText icon="Check" text="Played" />;
+    }
+  };
+
+  nowPlayingClasses = () => {
+    if (this.props.cueTime && this.isPlaying()) {
+      return "border-primary now-playing";
+    } else {
+      return "shadow-sm";
+    }
+  };
+
+  nowPlayingTextClasses = () => {
+    if (this.props.cueTime && this.isPlaying()) {
+      return "highlight";
+    } else {
+      return "";
     }
   };
 
@@ -178,13 +205,13 @@ class Track extends Component {
 
   render() {
     return (
-      <Card className={"mb-4 shadow-sm"}>
+      <Card className={`mb-4 playable ${this.nowPlayingClasses()}`}>
         <div className="d-flex align-items-center ">
           <div
             className="m-3 mt-0 me-0 d-flex align-items-start "
-            style={{ flexDirection: "column", width: "50px" }}
+            style={{ flexDirection: "row", width: "90px" }}
           >
-            <h4 className="mb-0">{this.props.order}</h4>
+            <h4 className="me-3">{this.props.order}</h4>
             {this.displayCueTime()}
           </div>
           <Card.Body>

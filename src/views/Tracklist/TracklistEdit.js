@@ -1,12 +1,12 @@
 import { Component } from "react";
-import TrackContainer from "../containers/TrackContainer";
-import tracks from "../trackData";
-import IconText from "../layout/global/IconText";
-import TracklistCompletionBar from "../components/TracklistCompletionBar";
-import VideoPlayer from "../components/VideoPlayer";
+import TrackContainer from "../../containers/TrackContainer";
+import tracks from "../../trackData";
+import IconText from "../../layout/global/IconText";
+import TracklistCompletionBar from "../../components/TracklistCompletionBar";
+import VideoPlayer from "../../components/VideoPlayer";
 import { Button } from "react-bootstrap";
 
-class TracklistShow extends Component {
+class TracklistEdit extends Component {
   state = {
     playedSeconds: "0",
   };
@@ -42,8 +42,13 @@ class TracklistShow extends Component {
             </h6>
           </div>
           <div>
-            <Button variant="outline-secondary" size="sm">
-              <IconText icon="PencilSquare" text="Edit" />
+            <a href={`/tracklists/${this.props.match.params.id}/edit`}>
+              <Button variant="outline-secondary me-3" size="sm">
+                <IconText icon="PencilSquare" text="Edit" />
+              </Button>
+            </a>
+            <Button variant="outline-primary" size="sm">
+              <IconText icon="Bookmark" text="Bookmark" />
             </Button>
           </div>
         </div>
@@ -65,4 +70,4 @@ class TracklistShow extends Component {
   }
 }
 
-export default TracklistShow;
+export default TracklistEdit;
