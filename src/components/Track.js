@@ -146,6 +146,12 @@ class Track extends Component {
     return this.props.playedSeconds > timeToSeconds(this.props.endTime);
   };
 
+  hasPlayedCardClasses = () => {
+    if (this.hasPlayed()) {
+      return "has-played";
+    }
+  };
+
   displayPlayIndicator = () => {
     if (this.isPlaying()) {
       return (
@@ -205,8 +211,10 @@ class Track extends Component {
 
   render() {
     return (
-      <Card className={`mb-4 playable ${this.nowPlayingClasses()}`}>
-        <div className="d-flex align-items-center ">
+      <Card
+        className={`mb-4 playable ${this.nowPlayingClasses()} ${this.hasPlayedCardClasses()}`}
+      >
+        <div className={`d-flex align-items-center`}>
           <div
             className="m-3 mt-0 me-0 d-flex align-items-start "
             style={{ flexDirection: "row", width: "90px" }}

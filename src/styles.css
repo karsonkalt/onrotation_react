@@ -46,7 +46,8 @@
 }
 
 .playable {
-  transition: border-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+  height: auto;
+  transition: all 0.5s ease-in-out;
 }
 
 .now-playing {
@@ -54,5 +55,5 @@
 }
 
 .highlight {
-  color: rgba(64, 90, 255, 1);
+  color: #0d6efd;
 }
