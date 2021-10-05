@@ -1,5 +1,3 @@
-import { v4 as uuid } from "uuid";
-
 const initialState = {
   tracklists: [],
   loading: false,
@@ -21,8 +19,14 @@ export default function tracklistReducer(state = initialState, action) {
         ...state,
         tracklists: action.payload.map((tracklist) => {
           return {
-            ...tracklist,
-            id: uuid(),
+            id: 1,
+            name: "Live at UMF Radio",
+            datePlayed: "2021-8-25",
+            artist: "Guy J",
+            creator: "karsonkalt",
+            dateCreated: "June 15, 2021",
+            numIdentifiedTracks: 12,
+            numTotalTracks: 12,
           };
         }),
         loading: false,
@@ -32,7 +36,6 @@ export default function tracklistReducer(state = initialState, action) {
       return {
         ...state,
         tracklists: state.tracklists.concat({
-          id: uuid(),
           name: "",
           artist: "",
         }),
