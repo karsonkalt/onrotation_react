@@ -1,11 +1,14 @@
 import { Component } from "react";
 import { connect } from "react-redux";
-
-import { Container } from "react-bootstrap";
+import { fetchTracklists } from "../store/actions/tracklistActions";
 
 import Tracklist from "../components/Tracklist";
 
 class TracklistContainer extends Component {
+  // componentDidMount() {
+  //   this.props.fetchTracklists();
+  // }
+
   renderTracklists = () => {
     return this.props.tracklists.map(
       ({
@@ -35,7 +38,7 @@ class TracklistContainer extends Component {
   };
 
   render() {
-    return this.renderTracklists();
+    return <li>test</li>;
   }
 }
 
@@ -46,4 +49,10 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect()(TracklistContainer);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchTracklists: () => dispatch(fetchTracklists()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TracklistContainer);

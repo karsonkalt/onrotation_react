@@ -6,7 +6,7 @@ const initialState = {
   userId: "",
 };
 
-export default function notificationReducer(state = initialState, action) {
+export default function sessionReducer(state = initialState, action) {
   console.log(action);
 
   switch (action.type) {

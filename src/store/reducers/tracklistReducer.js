@@ -19,14 +19,7 @@ export default function tracklistReducer(state = initialState, action) {
         ...state,
         tracklists: action.payload.map((tracklist) => {
           return {
-            id: 1,
-            name: "Live at UMF Radio",
-            datePlayed: "2021-8-25",
-            artist: "Guy J",
-            creator: "karsonkalt",
-            dateCreated: "June 15, 2021",
-            numIdentifiedTracks: 12,
-            numTotalTracks: 12,
+            ...tracklist,
           };
         }),
         loading: false,
