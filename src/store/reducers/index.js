@@ -1,6 +1,8 @@
 import { combineReducers } from "redux";
-import tracklists from "./tracklistReducer";
+import tracklistReducer from "./tracklistReducer";
+import notificationReducer from "./notificationReducer";
 
 export default combineReducers({
-  tracklists,
+  tracklistReducer,
+  notificationReducer,
 });

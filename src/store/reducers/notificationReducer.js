@@ -11,33 +11,32 @@ export default function notificationReducer(state = initialState, action) {
   switch (action.type) {
     case "LOADING_NOTIFICATIONS":
       return {
-        ...state,
-        tracklists: [...state.tracklists],
+        notifications: [],
         loading: true,
       };
 
     case "ADD_NOTIFICATIONS":
       return {
         ...state,
-        tracklists: action.payload.map((tracklist) => {
+        notifications: action.payload.map((notification) => {
           return {
-            ...tracklist,
+            ...notification,
             id: uuid(),
           };
         }),
         loading: false,
       };
 
-    case "READ_NOTIFICATION":
-      return {
-        ...state,
-        tracklists: state.tracklists.concat({
-          id: uuid(),
-          name: "",
-          artist: "",
-        }),
-        loading: false,
-      };
+    // case "READ_NOTIFICATION":
+    //   return {
+    //     ...state,
+    //     tracklists: state.tracklists.concat({
+    //       id: uuid(),
+    //       name: "",
+    //       artist: "",
+    //     }),
+    //     loading: false,
+    //   };
 
     default:
       return state;
