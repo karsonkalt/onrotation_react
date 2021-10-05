@@ -5,17 +5,19 @@ import App from "./App";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 import "bootstrap/dist/css/bootstrap.min.css";
-// import reducers
+import reducer from "./store/reducers/index";
 
-// let store = createStore(
-//   manageUsers,
-//   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-// );
+let store = createStore(
+  reducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 ReactDOM.render(
   // <Provider store={store}>
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   // </Provider>
   document.getElementById("root")

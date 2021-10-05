@@ -1,5 +1,8 @@
 import { Component } from "react";
+import { connect } from "react-redux";
+
 import { Container } from "react-bootstrap";
+
 import Tracklist from "../components/Tracklist";
 
 class TracklistContainer extends Component {
@@ -36,4 +39,11 @@ class TracklistContainer extends Component {
   }
 }
 
-export default TracklistContainer;
+const mapStateToProps = (state) => {
+  return {
+    tracklists: state.tracklists,
+    loading: state.loading,
+  };
+};
+
+export default connect()(TracklistContainer);
