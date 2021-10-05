@@ -19,7 +19,13 @@ export default function tracklistReducer(state = initialState, action) {
         ...state,
         tracklists: action.payload.map((tracklist) => {
           return {
-            ...tracklist,
+            id: tracklist.id,
+            name: tracklist.name,
+            artist: tracklist.artist,
+            creator: tracklist.creator,
+            dateCreated: tracklist.created_at,
+            numIdentifiedTracks: tracklist.number_of_identified_tracks,
+            numTotalTracks: tracklist.number_of_tracks,
           };
         }),
         loading: false,

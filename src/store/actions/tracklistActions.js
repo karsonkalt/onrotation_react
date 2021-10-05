@@ -11,6 +11,9 @@ export const fetchTracklists = () => {
           type: "ADD_TRACKLISTS",
           payload: json,
         });
+      })
+      .catch((error) => {
+        console.log(error);
       });
   };
 };

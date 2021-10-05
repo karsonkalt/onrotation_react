@@ -5,47 +5,25 @@ import { fetchTracklists } from "../store/actions/tracklistActions";
 import Tracklist from "../components/Tracklist";
 
 class TracklistContainer extends Component {
-  // componentDidMount() {
-  //   this.props.fetchTracklists();
-  // }
+  componentDidMount() {
+    this.props.fetchTracklists();
+  }
 
   renderTracklists = () => {
-    return this.props.tracklists.map(
-      ({
-        name,
-        artist,
-        datePlayed,
-        creator,
-        dateCreated,
-        numIdentifiedTracks,
-        numTotalTracks,
-        id,
-      }) => {
-        return (
-          <Tracklist
-            name={name}
-            artist={artist}
-            datePlayed={datePlayed}
-            creator={creator}
-            dateCreated={dateCreated}
-            numIdentifiedTracks={numIdentifiedTracks}
-            numTotalTracks={numTotalTracks}
-            id={id}
-          />
-        );
-      }
-    );
+    return this.props.tracklists.map((tracklist) => {
+      return <Tracklist tracklist={tracklist} />;
+    });
   };
 
   render() {
-    return <li>test</li>;
+    return this.renderTracklists();
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    tracklists: state.tracklists,
-    loading: state.loading,
+    tracklists: state.tracklistReducer.tracklists,
+    loading: state.tracklistReducer.loading,
   };
 };
 
