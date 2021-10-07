@@ -74,10 +74,10 @@ class TracklistShow extends Component {
             url="https://www.youtube.com/watch?v=4xFM5vG59sk&feature=emb_title&ab_channel=Lost%26Found%2FGuyJ"
             onProgress={this.handleNowPlaying}
           />
-          {/* <TrackContainer
+          <TrackContainer
             tracks={this.props.tracklist.tracks}
             playedSeconds={this.state.playedSeconds}
-          /> */}
+          />
         </>
       );
     }

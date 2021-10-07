@@ -40,8 +40,15 @@ class Track extends Component {
 
   displayArtist = () => {
     return this.props.artist ? (
-      <a href={`/artists/${this.props.id}`} className="clickable-subheader">
-        <IconText icon="Person" text={this.props.artist} className="me-3" />
+      <a
+        href={`/artists/${this.props.artist.id}`}
+        className="clickable-subheader"
+      >
+        <IconText
+          icon="Person"
+          text={this.props.artist.name}
+          className="me-3"
+        />
       </a>
     ) : (
       <IconText
@@ -54,8 +61,11 @@ class Track extends Component {
 
   displayLabel = () => {
     return this.props.label ? (
-      <a href={`/labels/${this.props.id}`} className="clickable-subheader">
-        <IconText icon="Vinyl" text={this.props.label} className="me-3" />
+      <a
+        href={`/labels/${this.props.label.id}`}
+        className="clickable-subheader"
+      >
+        <IconText icon="Vinyl" text={this.props.label.name} className="me-3" />
       </a>
     ) : (
       <IconText
@@ -76,7 +86,7 @@ class Track extends Component {
   };
 
   idButton = () => {
-    if (this.props.suggestedTrackIdentification) {
+    if (this.props.suggestedTrackIdentification !== []) {
       return (
         <OverlayTrigger
           key="left"
@@ -115,11 +125,11 @@ class Track extends Component {
   };
 
   suggestedTrackIdentification = () => {
-    return this.props.suggestedTrackIdentification ? (
-      <SuggestedTrackIdentification
-        {...this.props.suggestedTrackIdentification}
-      />
-    ) : null;
+    // return this.props.suggestedTrackIdentification !== [] ? (
+    //   <SuggestedTrackIdentification
+    //     {...this.props.suggestedTrackIdentification}
+    //   />
+    // ) : null;
   };
 
   bookmarkButton = () => {
@@ -183,13 +193,12 @@ class Track extends Component {
   identificationFooter = () => {
     return this.props.identifier ? (
       <Card.Footer className="text-muted" style={{ fontSize: "10px" }}>
-        {/* Change to Days Ago! */}
         identified <TimeAgo date={this.props.identifiedDate} /> by{" "}
         <a
           href={`/users/${this.props.identifier.id}`}
           className="clickable-subheader"
         >
-          {this.props.identifier.name}
+          {this.props.identifier.username}
         </a>
       </Card.Footer>
     ) : null;

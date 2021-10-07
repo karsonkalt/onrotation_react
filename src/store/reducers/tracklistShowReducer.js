@@ -25,7 +25,20 @@ export default function tracklistShowReducer(state = initialState, action) {
           numIdentifiedTracks: action.payload.number_of_identified_tracks,
           numTotalTracks: action.payload.number_of_tracks,
           youTubeURL: null,
-          tracks: action.payload.tracks,
+          tracks: action.payload.tracks.map((track) => {
+            return {
+              id: track.id,
+              name: track.name,
+              identifiedDate: track.created_at,
+              order: track.order,
+              cueTime: track.cue_time,
+              suggestedTrackIdentification:
+                track.suggested_track_identifications,
+              artist: track.artist,
+              label: track.label,
+              identifier: track.identifier,
+            };
+          }),
         },
         loading: false,
       };
