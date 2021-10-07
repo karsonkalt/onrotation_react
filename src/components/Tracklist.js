@@ -45,7 +45,7 @@ class Tracklist extends Component {
           <Card.Footer className="text-muted" style={{ fontSize: "10px" }}>
             {/* Change to Days Ago! */}
             added <TimeAgo date={this.props.tracklist.dateCreated} /> by{" "}
-            {this.props.tracklist.creator.name}
+            {this.props.tracklist.creator.username}
           </Card.Footer>
         </Card>
       </div>

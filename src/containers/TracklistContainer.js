@@ -22,8 +22,8 @@ class TracklistContainer extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    tracklists: state.tracklistReducer.tracklists,
-    loading: state.tracklistReducer.loading,
+    tracklists: state.tracklistIndexReducer.tracklists,
+    loading: state.tracklistIndexReducer.loading,
   };
 };
 

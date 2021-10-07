@@ -1,10 +1,12 @@
 import { combineReducers } from "redux";
-import tracklistReducer from "./tracklistReducer";
+import tracklistIndexReducer from "./tracklistIndexReducer";
+import tracklistShowReducer from "./tracklistShowReducer";
 import notificationReducer from "./notificationReducer";
 import sessionReducer from "./sessionReducer";
 
 export default combineReducers({
-  tracklistReducer,
+  tracklistIndexReducer,
+  tracklistShowReducer,
   notificationReducer,
   sessionReducer,
 });

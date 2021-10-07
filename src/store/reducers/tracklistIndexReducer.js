@@ -3,11 +3,9 @@ const initialState = {
   loading: false,
 };
 
-export default function tracklistReducer(state = initialState, action) {
-  console.log(action);
-
+export default function tracklistIndexReducer(state = initialState, action) {
   switch (action.type) {
-    case "LOADING_TRACKLIST":
+    case "LOADING_TRACKLISTS":
       return {
         ...state,
         tracklists: [...state.tracklists],
@@ -26,23 +24,11 @@ export default function tracklistReducer(state = initialState, action) {
             dateCreated: tracklist.created_at,
             numIdentifiedTracks: tracklist.number_of_identified_tracks,
             numTotalTracks: tracklist.number_of_tracks,
+            datePlayed: tracklist.date_played,
           };
         }),
         loading: false,
       };
-
-    case "ADD_TRACKLIST":
-      return {
-        ...state,
-        tracklists: state.tracklists.concat({
-          name: "",
-          artist: "",
-        }),
-        loading: false,
-      };
-
-    case "DELETE_TRACKLIST":
-      return state.filter((tracklist) => tracklist.id !== action.payload.id);
 
     default:
       return state;
