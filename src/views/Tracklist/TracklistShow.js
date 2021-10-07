@@ -71,7 +71,7 @@ class TracklistShow extends Component {
             className="mb-3"
           />
           <VideoPlayer
-            url="https://www.youtube.com/watch?v=4xFM5vG59sk&feature=emb_title&ab_channel=Lost%26Found%2FGuyJ"
+            url={this.props.tracklist.youTubeURL}
             onProgress={this.handleNowPlaying}
           />
           <TrackContainer

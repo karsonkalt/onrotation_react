@@ -1,12 +1,18 @@
 import { Navbar, Nav } from "react-bootstrap";
 import { Component } from "react";
+import { connect } from "react-redux";
 import Search from "./Search";
 import NotificationButton from "./NotificationButton";
 import UserDropdown from "./UserDropdown";
+import LoginDropdown from "./LoginDropdown";
 
 import notificationData from "../../data/notificationData";
 
 class NavBar extends Component {
+  renderLoginOrUserDropdown = () => {
+    return this.props.loggedIn ? <UserDropdown /> : <LoginDropdown />;
+  };
+
   render() {
     return (
       <Navbar
@@ -27,11 +33,19 @@ class NavBar extends Component {
 
         <Nav className="ms-3">
           <NotificationButton notifications={notificationData} />
-          <UserDropdown />
+          {this.renderLoginOrUserDropdown()}
         </Nav>
       </Navbar>
     );
   }
 }
 
-export default NavBar;
+const mapStateToProps = (state) => {
+  return {
+    loggedIn: state.sessionReducer.loggedIn,
+    username: state.sessionReducer.username,
+    userId: state.sessionReducer.userId,
+  };
+};
+
+export default connect(mapStateToProps)(NavBar);

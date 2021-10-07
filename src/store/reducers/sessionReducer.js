@@ -11,6 +11,7 @@ export default function sessionReducer(state = initialState, action) {
 
   switch (action.type) {
     case "LOGIN":
+      debugger;
       return {
         loggedIn: true,
         username: action.payload.username,

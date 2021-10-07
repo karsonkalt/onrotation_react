@@ -86,7 +86,7 @@ class Track extends Component {
   };
 
   idButton = () => {
-    if (this.props.suggestedTrackIdentification !== []) {
+    if (this.props.suggestedTrackIdentification && this.props.name === null) {
       return (
         <OverlayTrigger
           key="left"
@@ -110,7 +110,7 @@ class Track extends Component {
           </span>
         </OverlayTrigger>
       );
-    } else if (this.props.name == null) {
+    } else if (this.props.name === null) {
       return (
         <Button
           className="me-3"
@@ -125,11 +125,11 @@ class Track extends Component {
   };
 
   suggestedTrackIdentification = () => {
-    // return this.props.suggestedTrackIdentification !== [] ? (
-    //   <SuggestedTrackIdentification
-    //     {...this.props.suggestedTrackIdentification}
-    //   />
-    // ) : null;
+    return this.props.suggestedTrackIdentification ? (
+      <SuggestedTrackIdentification
+        {...this.props.suggestedTrackIdentification}
+      />
+    ) : null;
   };
 
   bookmarkButton = () => {

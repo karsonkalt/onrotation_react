@@ -3,13 +3,21 @@ import { Card, Button } from "react-bootstrap";
 import IconText from "../layout/global/IconText";
 
 class SuggestedTrackIdentification extends Component {
-  incorrectVoteCount =
-    this.props.suggestedTrackIdentificationVotes.voteCount -
-    this.props.suggestedTrackIdentificationVotes.voteCountCorrect;
+  incorrectVoteCount = () => {
+    return this.props.suggestedTrackIdentificationVotes.filter(
+      (vote) => vote.is_identification_correct === false
+    ).length;
+  };
+
+  correctVoteCount = () => {
+    return this.props.suggestedTrackIdentificationVotes.filter(
+      (vote) => vote.is_identification_correct === true
+    ).length;
+  };
 
   displayArtist = () => {
     return this.props.suggestedArtist ? (
-      <IconText icon="Person" text={this.props.suggestedArtist} />
+      <IconText icon="Person" text={this.props.suggestedArtist.name} />
     ) : null;
   };
 
@@ -22,7 +30,7 @@ class SuggestedTrackIdentification extends Component {
         <span style={{ fontSize: "12px" }}>
           <IconText
             icon="Lightbulb"
-            text={`Suggested Track Identification by ${this.props.identifier}`}
+            text={`Suggested Track Identification by ${this.props.identifier.username}`}
           />
         </span>
         <div
@@ -32,7 +40,7 @@ class SuggestedTrackIdentification extends Component {
           <div style={{ display: "flex" }}>
             <IconText
               icon="MusicNote"
-              text={this.props.suggestedName}
+              text={`${this.props.suggestedName}`}
               className="me-3"
             />
             {this.displayArtist()}
@@ -43,8 +51,7 @@ class SuggestedTrackIdentification extends Component {
                 <IconText icon="CheckCircleFill" text="Correct" />
               </Button>
               <span style={{ fontSize: "10px" }} className="text-success">
-                {this.props.suggestedTrackIdentificationVotes.voteCountCorrect}{" "}
-                Votes
+                {this.correctVoteCount()} Votes
               </span>
             </div>
             <div className="flex-column" style={{ display: "flex" }}>
@@ -52,7 +59,7 @@ class SuggestedTrackIdentification extends Component {
                 <IconText icon="XCircleFill" text="Incorrect" />
               </Button>
               <span style={{ fontSize: "10px" }} className="text-danger">
-                {this.incorrectVoteCount} Votes
+                {this.incorrectVoteCount()} Votes
               </span>
             </div>
           </div>
