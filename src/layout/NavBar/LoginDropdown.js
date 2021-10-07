@@ -5,8 +5,8 @@ import { fetchLogin } from "../../store/actions/sessionActions";
 
 class LoginDropdown extends Component {
   state = {
-    username: "karson",
-    password: "password!",
+    emailAddress: "admin@gmail.com",
+    password: "password",
   };
 
   handleSubmit = (event) => {

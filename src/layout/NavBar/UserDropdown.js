@@ -1,10 +1,11 @@
 import { NavDropdown } from "react-bootstrap";
 
-function UserDropdown() {
+function UserDropdown(props) {
   return (
-    <NavDropdown title="Username" className="d-flex flex-row-reverse">
+    <NavDropdown title={props.username} className="d-flex flex-row-reverse">
       <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
       <NavDropdown.Item href="/settings">Settings</NavDropdown.Item>
+      <NavDropdown.Item>Logout</NavDropdown.Item>
     </NavDropdown>
   );
 }

@@ -1,5 +1,3 @@
-import { v4 as uuid } from "uuid";
-
 const initialState = {
   loggedIn: false,
   username: "",
@@ -7,15 +5,12 @@ const initialState = {
 };
 
 export default function sessionReducer(state = initialState, action) {
-  console.log(action);
-
   switch (action.type) {
     case "LOGIN":
-      debugger;
       return {
         loggedIn: true,
         username: action.payload.username,
-        userId: action.payload.userId,
+        userId: action.payload.id,
       };
 
     case "LOGOUT":

@@ -6,11 +6,28 @@ import NotificationButton from "./NotificationButton";
 import UserDropdown from "./UserDropdown";
 import LoginDropdown from "./LoginDropdown";
 
-import notificationData from "../../data/notificationData";
+import { fetchNotifications } from "../../store/actions/notificationActions";
 
 class NavBar extends Component {
   renderLoginOrUserDropdown = () => {
-    return this.props.loggedIn ? <UserDropdown /> : <LoginDropdown />;
+    return this.props.loggedIn ? (
+      <UserDropdown username={this.props.username} />
+    ) : (
+      <LoginDropdown />
+    );
+  };
+
+  renderNotificationsIfLoggedIn = () => {
+    if (this.props.loggedIn) {
+      return (
+        <NotificationButton
+          notifications={this.props.notifications}
+          fetchNotifications={() =>
+            this.props.fetchNotifications(this.props.userId)
+          }
+        />
+      );
+    }
   };
 
   render() {
@@ -32,7 +49,7 @@ class NavBar extends Component {
         <Search />
 
         <Nav className="ms-3">
-          <NotificationButton notifications={notificationData} />
+          {this.renderNotificationsIfLoggedIn()}
           {this.renderLoginOrUserDropdown()}
         </Nav>
       </Navbar>
@@ -45,7 +62,14 @@ const mapStateToProps = (state) => {
     loggedIn: state.sessionReducer.loggedIn,
     username: state.sessionReducer.username,
     userId: state.sessionReducer.userId,
+    notifications: state.notificationReducer,
   };
 };
 
-export default connect(mapStateToProps)(NavBar);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchNotifications: (id) => dispatch(fetchNotifications(id)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

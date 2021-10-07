@@ -1,42 +1,19 @@
-import { v4 as uuid } from "uuid";
-
-const initialState = {
-  notifications: [],
-  loading: false,
-};
+const initialState = [];
 
 export default function notificationReducer(state = initialState, action) {
-  console.log(action);
-
   switch (action.type) {
-    case "LOADING_NOTIFICATIONS":
-      return {
-        notifications: [],
-        loading: true,
-      };
-
     case "ADD_NOTIFICATIONS":
-      return {
-        ...state,
-        notifications: action.payload.map((notification) => {
-          return {
-            ...notification,
-            id: uuid(),
-          };
-        }),
-        loading: false,
-      };
+      return action.payload.map((notification) => {
+        return {
+          ...notification,
+        };
+      });
 
-    // case "READ_NOTIFICATION":
-    //   return {
-    //     ...state,
-    //     tracklists: state.tracklists.concat({
-    //       id: uuid(),
-    //       name: "",
-    //       artist: "",
-    //     }),
-    //     loading: false,
-    //   };
+    // This should send a post to the server? move to fetch calls.
+    case "READ_NOTIFICATION":
+      return state.filter(
+        (notification) => notification.id !== action.payload.id
+      );
 
     default:
       return state;

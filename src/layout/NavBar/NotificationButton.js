@@ -13,20 +13,30 @@ import NotificationBadge from "./NotificationBadge";
 import IconText from "../global/IconText";
 
 class NotificationButton extends Component {
+  componentDidMount() {
+    this.props.fetchNotifications();
+  }
+
   numOfNotifications = () => {
     return this.props.notifications.length;
   };
 
-  chooseIcon = (type) => {
-    return type == "track" ? "MusicNote" : "MusicNoteList";
+  chooseIcon = (notification) => {
+    return notification.track ? "MusicNote" : "MusicNoteList";
+  };
+
+  generateMessage = (notification) => {
+    return notification.track
+      ? `A track you bookmarked has beed identified as ${notification.track.name} by ARTIST`
+      : `A tracklist have been watching has new ${notification.tracklist.name} tracks that have been identified`;
   };
 
   renderNotifications = () => {
     return this.props.notifications.map((notification) => {
       return (
         <Notification
-          icon={this.chooseIcon(notification.type)}
-          text={notification.message}
+          icon={this.chooseIcon(notification)}
+          text={this.generateMessage(notification)}
         />
       );
     });
