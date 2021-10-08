@@ -10,6 +10,16 @@ import {
 import { MusicNote, MusicNoteList } from "react-bootstrap-icons";
 
 class Notification extends Component {
+  handleClick = () => {
+    this.props.fetchReadNotification(
+      {
+        notificationId: this.props.notificationId,
+        notificationType: this.props.notificationType,
+      },
+      this.props.userId
+    );
+  };
+
   selectIcon = (icon) => {
     switch (icon) {
       case "MusicNote":
@@ -29,6 +39,7 @@ class Notification extends Component {
         action
         className="align-items-center"
         style={{ display: "flex" }}
+        onClick={this.handleClick}
       >
         <div className="pe-3">{this.selectIcon(this.props.icon)}</div>
         <div>{this.props.text}</div>

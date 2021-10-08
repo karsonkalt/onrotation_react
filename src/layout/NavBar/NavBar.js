@@ -6,7 +6,10 @@ import NotificationButton from "./NotificationButton";
 import UserDropdown from "./UserDropdown";
 import LoginDropdown from "./LoginDropdown";
 
-import { fetchNotifications } from "../../store/actions/notificationActions";
+import {
+  fetchNotifications,
+  fetchReadNotification,
+} from "../../store/actions/notificationActions";
 
 class NavBar extends Component {
   renderLoginOrUserDropdown = () => {
@@ -25,6 +28,8 @@ class NavBar extends Component {
           fetchNotifications={() =>
             this.props.fetchNotifications(this.props.userId)
           }
+          fetchReadNotification={this.props.fetchReadNotification}
+          userId={this.props.userId}
         />
       );
     }
@@ -46,7 +51,7 @@ class NavBar extends Component {
           </Nav>
         </div>
 
-        <Search />
+        {/* <Search /> */}
 
         <Nav className="ms-3">
           {this.renderNotificationsIfLoggedIn()}
@@ -69,6 +74,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchNotifications: (id) => dispatch(fetchNotifications(id)),
+    fetchReadNotification: (data, userId) =>
+      dispatch(fetchReadNotification(data, userId)),
   };
 };
 

@@ -3,6 +3,7 @@ import {
   Person,
   CalendarEvent,
   Bookmark,
+  BookmarkFill,
   Vinyl,
   MusicNote,
   MusicNoteList,
@@ -63,6 +64,9 @@ class IconText extends Component {
 
       case "Bookmark":
         return <Bookmark className={`me-1 ${this.props.iconPadding}`} />;
+
+      case "BookmarkFill":
+        return <BookmarkFill className={`me-1 ${this.props.iconPadding}`} />;
 
       case "XCircleFill":
         return <XCircleFill className={`me-1 ${this.props.iconPadding}`} />;

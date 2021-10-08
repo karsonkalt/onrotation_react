@@ -14,7 +14,7 @@ import IconText from "../global/IconText";
 
 class NotificationButton extends Component {
   componentDidMount() {
-    this.props.fetchNotifications();
+    this.props.fetchNotifications(this.props.userId);
   }
 
   numOfNotifications = () => {
@@ -27,19 +27,39 @@ class NotificationButton extends Component {
 
   generateMessage = (notification) => {
     return notification.track
-      ? `A track you bookmarked has beed identified as ${notification.track.name} by ARTIST`
-      : `A tracklist have been watching has new ${notification.tracklist.name} tracks that have been identified`;
+      ? `A track you bookmarked has beed identified as ${notification.track.name} by ${notification.track.artist.name}`
+      : `${notification.tracklist.name} has new tracks that have been identified`;
+  };
+
+  renderNotificationButton = () => {
+    if (this.numOfNotifications() > 0) {
+      return <NotificationBadge count={this.numOfNotifications()} />;
+    }
+  };
+
+  notificationType = (notification) => {
+    return notification.track
+      ? { notificationType: "track" }
+      : { notificationType: "tracklist" };
   };
 
   renderNotifications = () => {
-    return this.props.notifications.map((notification) => {
-      return (
-        <Notification
-          icon={this.chooseIcon(notification)}
-          text={this.generateMessage(notification)}
-        />
-      );
-    });
+    if (this.props.notifications.length > 0) {
+      return this.props.notifications.map((notification) => {
+        return (
+          <Notification
+            icon={this.chooseIcon(notification)}
+            text={this.generateMessage(notification)}
+            fetchReadNotification={this.props.fetchReadNotification}
+            notificationId={notification.id}
+            userId={this.props.userId}
+            notificationType={this.notificationType(notification)}
+          />
+        );
+      });
+    } else {
+      return <div className="m-3">No notifications to display</div>;
+    }
   };
 
   render() {
@@ -65,7 +85,7 @@ class NotificationButton extends Component {
             className="position-relative"
           >
             <IconText icon="Bookmark" text="Notifications" />
-            <NotificationBadge count={this.numOfNotifications()} />
+            {this.renderNotificationButton()}
           </Button>
         </OverlayTrigger>
       </Nav.Link>

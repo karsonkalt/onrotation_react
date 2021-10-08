@@ -1,17 +1,14 @@
 import { Component } from "react";
 import { Card, Button, OverlayTrigger, Tooltip } from "react-bootstrap";
 import IconText from "../layout/global/IconText";
+import BookmarkButton from "../layout/global/BookmarkButton";
 import SuggestedTrackIdentification from "./SuggestedTrackIdentification";
 import CreateSuggestedTrackIdentificationForm from "./CreateSuggestedTrackIdentificationForm";
 import TimeAgo from "react-timeago";
 import timeToSeconds from "time-to-seconds";
+import { connect } from "react-redux";
 
 class Track extends Component {
-  // daysAgo = () => {
-  //   const timeAgo = new TimeAgo("en-US");
-  //   return timeAgo.format(new Date() - Date.parse(this.props.dateCreated));
-  // };
-
   state = {
     showForm: false,
     bookmarked: false,
@@ -86,41 +83,43 @@ class Track extends Component {
   };
 
   idButton = () => {
-    if (this.props.suggestedTrackIdentification && this.props.name === null) {
-      return (
-        <OverlayTrigger
-          key="left"
-          placement="left"
-          overlay={
-            <Tooltip id="tooltip-left">
-              Suggested track identification must be resolved before suggesting
-              new identification.
-            </Tooltip>
-          }
-        >
-          <span>
-            <Button
-              className="me-3"
-              variant="outline-secondary"
-              size="sm"
-              disabled
-            >
-              <IconText icon="LightbulbOff" text="Identify" />
-            </Button>
-          </span>
-        </OverlayTrigger>
-      );
-    } else if (this.props.name === null) {
-      return (
-        <Button
-          className="me-3"
-          variant="outline-secondary"
-          size="sm"
-          onClick={this.handleIdentifyClick}
-        >
-          <IconText icon="Lightbulb" text="Identify" />
-        </Button>
-      );
+    if (this.props.loggedIn) {
+      if (this.props.suggestedTrackIdentification && this.props.name === null) {
+        return (
+          <OverlayTrigger
+            key="left"
+            placement="left"
+            overlay={
+              <Tooltip id="tooltip-left">
+                Suggested track identification must be resolved before
+                suggesting new identification.
+              </Tooltip>
+            }
+          >
+            <span>
+              <Button
+                className="me-3"
+                variant="outline-secondary"
+                size="sm"
+                disabled
+              >
+                <IconText icon="LightbulbOff" text="Identify" />
+              </Button>
+            </span>
+          </OverlayTrigger>
+        );
+      } else if (this.props.name === null) {
+        return (
+          <Button
+            className="me-3"
+            variant="outline-secondary"
+            size="sm"
+            onClick={this.handleIdentifyClick}
+          >
+            <IconText icon="Lightbulb" text="Identify" />
+          </Button>
+        );
+      }
     }
   };
 
@@ -133,16 +132,19 @@ class Track extends Component {
   };
 
   bookmarkButton = () => {
-    return this.props.name == null ? (
-      <Button
-        onClick={this.handleBookmarkClick}
-        className="me-3"
-        variant="outline-primary"
-        size="sm"
-      >
-        <IconText icon="Bookmark" text="Bookmark" />
-      </Button>
+    return this.props.name == null && this.props.loggedIn ? (
+      <BookmarkButton
+        bookmarked={this.state.bookmarked}
+        handleBookmarkClick={this.handleBookmarkClick}
+      />
     ) : null;
+  };
+
+  handleBookmarkClick = (event) => {
+    this.setState({
+      ...this.state,
+      bookmarked: !this.state.bookmarked,
+    });
   };
 
   isPlaying = () => {
@@ -204,10 +206,6 @@ class Track extends Component {
     ) : null;
   };
 
-  handleBookmarkClick = () => {
-    debugger;
-  };
-
   handleIdentifyClick = () => {
     this.setState({ showForm: !this.state.showForm });
   };
@@ -254,4 +252,11 @@ class Track extends Component {
   }
 }
 
-export default Track;
+const mapStateToProps = (state) => {
+  return {
+    loggedIn: state.sessionReducer.loggedIn,
+    vote: null,
+  };
+};
+
+export default connect(mapStateToProps)(Track);
