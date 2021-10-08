@@ -1,5 +1,4 @@
 import { Component } from "react";
-import tracklists from "../../data/data";
 import IconText from "../../layout/global/IconText";
 import TracklistContainer from "../../containers/TracklistContainer";
 import { Button } from "react-bootstrap";
@@ -34,7 +33,7 @@ class TrackShow extends Component {
         </div>
         <div className="mt-3">
           <h5>Played In</h5>
-          <TracklistContainer tracklists={tracklists} />
+          <TracklistContainer trackId={this.props.match.params.id} />
         </div>
       </>
     );

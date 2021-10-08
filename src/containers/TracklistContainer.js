@@ -1,12 +1,22 @@
 import { Component } from "react";
 import { connect } from "react-redux";
-import { fetchTracklists } from "../store/actions/tracklistActions";
+import {
+  fetchTracklists,
+  fetchTrackTracklists,
+  fetchArtistTracklists,
+} from "../store/actions/tracklistActions";
 
 import Tracklist from "../components/Tracklist";
 
 class TracklistContainer extends Component {
   componentDidMount() {
-    this.props.fetchTracklists();
+    if (this.props.trackId) {
+      this.props.fetchTrackTracklists(this.props.trackId);
+    } else if (this.props.artistId) {
+      this.props.fetchArtistTracklists(this.props.artistId);
+    } else {
+      this.props.fetchTracklists();
+    }
   }
 
   renderTracklists = () => {
@@ -30,6 +40,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchTracklists: () => dispatch(fetchTracklists()),
+    fetchTrackTracklists: (id) => dispatch(fetchTrackTracklists(id)),
+    fetchArtistTracklists: (id) => dispatch(fetchArtistTracklists(id)),
   };
 };
 

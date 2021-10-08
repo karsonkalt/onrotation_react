@@ -17,6 +17,44 @@ const fetchTracklists = () => {
   };
 };
 
+const fetchTrackTracklists = (id) => {
+  return (dispatch) => {
+    dispatch({
+      type: "LOADING_TRACKLISTS",
+    });
+    fetch(`http://localhost:3000/tracks/${id}`)
+      .then((resp) => resp.json())
+      .then((json) => {
+        dispatch({
+          type: "ADD_TRACKLISTS",
+          payload: json,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+};
+
+const fetchArtistTracklists = (id) => {
+  return (dispatch) => {
+    dispatch({
+      type: "LOADING_TRACKLISTS",
+    });
+    fetch(`http://localhost:3000/artists/${id}`)
+      .then((resp) => resp.json())
+      .then((json) => {
+        dispatch({
+          type: "ADD_TRACKLISTS",
+          payload: json,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+};
+
 const fetchTracklist = (id) => {
   return (dispatch) => {
     dispatch({
@@ -36,4 +74,9 @@ const fetchTracklist = (id) => {
   };
 };
 
-export { fetchTracklists, fetchTracklist };
+export {
+  fetchTracklists,
+  fetchTrackTracklists,
+  fetchArtistTracklists,
+  fetchTracklist,
+};
