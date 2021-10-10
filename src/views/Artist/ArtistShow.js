@@ -1,12 +1,9 @@
 import { Component } from "react";
 import TracklistContainer from "../../containers/TracklistContainer";
 import IconText from "../../layout/global/IconText";
+import TrackContainer from "../../containers/TrackContainer";
 
 class ArtistShow extends Component {
-  search = () => {
-    return this.props.location.search.substring(1);
-  };
-
   render() {
     return (
       <>
@@ -20,6 +17,8 @@ class ArtistShow extends Component {
         <div className="mt-3">
           <h5>Tracklists</h5>
           <TracklistContainer artistId={this.props.match.params.id} />
+          <h5>Tracks</h5>
+          <TrackContainer artistId={this.props.match.params.id} />
         </div>
       </>
     );

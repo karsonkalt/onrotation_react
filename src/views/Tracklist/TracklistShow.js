@@ -1,6 +1,5 @@
 import { Component } from "react";
-import TrackContainer from "../../containers/TrackContainer";
-import tracks from "../../data/trackData";
+import TracklistTrackContainer from "../../containers/TracklistTrackContainer";
 import IconText from "../../layout/global/IconText";
 import TracklistCompletionBar from "../../components/TracklistCompletionBar";
 import VideoPlayer from "../../components/VideoPlayer";
@@ -74,7 +73,7 @@ class TracklistShow extends Component {
             url={this.props.tracklist.youTubeURL}
             onProgress={this.handleNowPlaying}
           />
-          <TrackContainer
+          <TracklistTrackContainer
             tracks={this.props.tracklist.tracks}
             playedSeconds={this.state.playedSeconds}
           />

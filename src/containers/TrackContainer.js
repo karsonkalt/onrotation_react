@@ -1,43 +1,30 @@
 import { Component } from "react";
 import Track from "../components/Track";
+import { connect } from "react-redux";
+import {
+  fetchArtistTracks,
+  fetchTracks,
+} from "../store/actions/tracklistActions";
 
 class TrackContainer extends Component {
-  endTime = (index, tracks) => {
-    return tracks[index + 1] && tracks[index + 1].cueTime
-      ? tracks[index + 1].cueTime
-      : "9:99:99";
-  };
+  componentDidMount() {
+    if (this.props.artistId) {
+      this.props.fetchArtistTracks(this.props.artistId);
+    } else {
+      this.props.fetchTracks();
+    }
+  }
 
   renderTracks = () => {
     return this.props.tracks.map(
-      (
-        {
-          name,
-          artist,
-          label,
-          order,
-          cueTime,
-          identifier,
-          id,
-          suggestedTrackIdentification,
-          identifiedDate,
-        },
-        index,
-        tracks
-      ) => {
+      ({ name, artist, label, id, identifiedDate }) => {
         return (
           <Track
             name={name}
             artist={artist}
             label={label}
-            identifier={identifier}
-            cueTime={cueTime}
-            endTime={this.endTime(index, tracks)}
-            order={order}
             id={id}
-            suggestedTrackIdentification={suggestedTrackIdentification}
             identifiedDate={identifiedDate}
-            playedSeconds={this.props.playedSeconds}
           />
         );
       }
@@ -49,4 +36,15 @@ class TrackContainer extends Component {
   }
 }
 
-export default TrackContainer;
+const mapStateToProps = (state) => {
+  return { tracks: state.indexReducer.tracks };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchArtistTracks: (id) => dispatch(fetchArtistTracks(id)),
+    fetchTracks: () => dispatch(fetchTracks()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TrackContainer);

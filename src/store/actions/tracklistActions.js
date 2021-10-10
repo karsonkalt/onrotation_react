@@ -22,7 +22,7 @@ const fetchTrackTracklists = (id) => {
     dispatch({
       type: "LOADING_TRACKLISTS",
     });
-    fetch(`http://localhost:3000/tracks/${id}`)
+    fetch(`http://localhost:3000/tracks/${id}/tracklists`)
       .then((resp) => resp.json())
       .then((json) => {
         dispatch({
@@ -41,11 +41,30 @@ const fetchArtistTracklists = (id) => {
     dispatch({
       type: "LOADING_TRACKLISTS",
     });
-    fetch(`http://localhost:3000/artists/${id}`)
+    fetch(`http://localhost:3000/artists/${id}/tracklists`)
       .then((resp) => resp.json())
       .then((json) => {
         dispatch({
           type: "ADD_TRACKLISTS",
+          payload: json,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+};
+
+const fetchArtistTracks = (id) => {
+  return (dispatch) => {
+    dispatch({
+      type: "LOADING_TRACKS",
+    });
+    fetch(`http://localhost:3000/artists/${id}/tracks`)
+      .then((resp) => resp.json())
+      .then((json) => {
+        dispatch({
+          type: "ADD_TRACKS",
           payload: json,
         });
       })
@@ -74,9 +93,30 @@ const fetchTracklist = (id) => {
   };
 };
 
+const fetchTracks = () => {
+  return (dispatch) => {
+    dispatch({
+      type: "LOADING_TRACKS",
+    });
+    fetch(`http://localhost:3000/tracks/`)
+      .then((resp) => resp.json())
+      .then((json) => {
+        dispatch({
+          type: "ADD_TRACKS",
+          payload: json,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+};
+
 export {
   fetchTracklists,
   fetchTrackTracklists,
   fetchArtistTracklists,
   fetchTracklist,
+  fetchArtistTracks,
+  fetchTracks,
 };
