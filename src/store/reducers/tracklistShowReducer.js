@@ -1,6 +1,6 @@
 const initialState = {
   tracklist: {},
-  loading: false,
+  loading: true,
 };
 
 export default function tracklistShowReducer(state = initialState, action) {
