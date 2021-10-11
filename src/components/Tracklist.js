@@ -3,6 +3,7 @@ import { Card } from "react-bootstrap";
 import TracklistCompletionBar from "../components/TracklistCompletionBar";
 import IconText from "../layout/global/IconText";
 import TimeAgo from "react-timeago";
+import { Link } from "react-router-dom";
 
 class Tracklist extends Component {
   render() {
@@ -11,18 +12,18 @@ class Tracklist extends Component {
         <Card className="mb-4 shadow-sm">
           {/* <Card.Header>Recently Added</Card.Header> */}
           <Card.Body>
-            <a
-              href={`/tracklists/${this.props.tracklist.id}`}
+            <Link
+              to={`/tracklists/${this.props.tracklist.id}`}
               className="clickable-header"
             >
               <Card.Title>{this.props.tracklist.name}</Card.Title>
-            </a>
+            </Link>
             <Card.Subtitle
               className="mb-2 text-muted"
               style={{ display: "flex" }}
             >
-              <a
-                href={`/artists/${this.props.tracklist.artist.id}`}
+              <Link
+                to={`/artists/${this.props.tracklist.artist.id}`}
                 className="clickable-subheader"
               >
                 <IconText
@@ -30,7 +31,7 @@ class Tracklist extends Component {
                   text={this.props.tracklist.artist.name}
                   className="me-3"
                 />
-              </a>
+              </Link>
               <IconText
                 icon="CalendarEvent"
                 text={this.props.tracklist.datePlayed}

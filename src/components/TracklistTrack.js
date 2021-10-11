@@ -7,6 +7,7 @@ import CreateSuggestedTrackIdentificationForm from "./CreateSuggestedTrackIdenti
 import TimeAgo from "react-timeago";
 import timeToSeconds from "time-to-seconds";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 class TracklistTrack extends Component {
   state = {
@@ -16,14 +17,14 @@ class TracklistTrack extends Component {
 
   displayName = () => {
     return this.props.name ? (
-      <a
-        href={`/tracks/${this.props.id}`}
+      <Link
+        to={`/tracks/${this.props.id}`}
         className={`clickable-header ${this.nowPlayingTextClasses()}`}
       >
         <Card.Title>
           <IconText icon="MusicNote" text={this.props.name} className="me-3" />
         </Card.Title>
-      </a>
+      </Link>
     ) : (
       <Card.Title>
         <IconText
@@ -37,8 +38,8 @@ class TracklistTrack extends Component {
 
   displayArtist = () => {
     return this.props.artist ? (
-      <a
-        href={`/artists/${this.props.artist.id}`}
+      <Link
+        to={`/artists/${this.props.artist.id}`}
         className="clickable-subheader"
       >
         <IconText
@@ -46,7 +47,7 @@ class TracklistTrack extends Component {
           text={this.props.artist.name}
           className="me-3"
         />
-      </a>
+      </Link>
     ) : (
       <IconText
         icon="Person"
@@ -58,12 +59,12 @@ class TracklistTrack extends Component {
 
   displayLabel = () => {
     return this.props.label ? (
-      <a
-        href={`/labels/${this.props.label.id}`}
+      <Link
+        to={`/labels/${this.props.label.id}`}
         className="clickable-subheader"
       >
         <IconText icon="Vinyl" text={this.props.label.name} className="me-3" />
-      </a>
+      </Link>
     ) : (
       <IconText
         icon="Vinyl"
@@ -196,12 +197,12 @@ class TracklistTrack extends Component {
     return this.props.identifier ? (
       <Card.Footer className="text-muted" style={{ fontSize: "10px" }}>
         identified <TimeAgo date={this.props.identifiedDate} /> by{" "}
-        <a
-          href={`/users/${this.props.identifier.id}`}
+        <Link
+          to={`/users/${this.props.identifier.id}`}
           className="clickable-subheader"
         >
           {this.props.identifier.username}
-        </a>
+        </Link>
       </Card.Footer>
     ) : null;
   };

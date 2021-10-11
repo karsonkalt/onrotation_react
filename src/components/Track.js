@@ -1,16 +1,17 @@
 import { Component } from "react";
-import { Card, Button, OverlayTrigger, Tooltip } from "react-bootstrap";
+import { Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import IconText from "../layout/global/IconText";
 
 class Track extends Component {
   displayLabel = () => {
     return this.props.label.name ? (
-      <a
-        href={`/labels/${this.props.label.id}`}
+      <Link
+        to={`/labels/${this.props.label.id}`}
         className="clickable-subheader"
       >
         <IconText icon="Vinyl" text={this.props.label.name} className="me-3" />
-      </a>
+      </Link>
     ) : (
       <IconText
         icon="Vinyl"
@@ -25,7 +26,10 @@ class Track extends Component {
       <Card className={`mb-4 playable`}>
         <div className={`d-flex align-items-center`}>
           <Card.Body>
-            <a href={`/tracks/${this.props.id}`} className={`clickable-header`}>
+            <Link
+              to={`/tracks/${this.props.id}`}
+              className={`clickable-header`}
+            >
               <Card.Title>
                 <IconText
                   icon="MusicNote"
@@ -33,13 +37,13 @@ class Track extends Component {
                   className="me-3"
                 />
               </Card.Title>
-            </a>
+            </Link>
             <Card.Subtitle
               className="mb-2 text-muted"
               style={{ display: "flex" }}
             >
-              <a
-                href={`/artists/${this.props.artist.id}`}
+              <Link
+                to={`/artists/${this.props.artist.id}`}
                 className="clickable-subheader"
               >
                 <IconText
@@ -47,7 +51,7 @@ class Track extends Component {
                   text={this.props.artist.name}
                   className="me-3"
                 />
-              </a>
+              </Link>
               {this.displayLabel()}
             </Card.Subtitle>
           </Card.Body>

@@ -2,6 +2,7 @@ import { Component } from "react";
 import IconText from "../../layout/global/IconText";
 import TracklistContainer from "../../containers/TracklistContainer";
 import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 class TrackShow extends Component {
   render() {
@@ -17,12 +18,12 @@ class TrackShow extends Component {
               />
             </h4>
             <h6 className="mb-2 text-muted" style={{ display: "flex" }}>
-              <a
-                href={`/artists/${this.props.id}`}
+              <Link
+                to={`/artists/${this.props.id}`}
                 className="clickable-subheader"
               >
                 <IconText icon="Person" text="Artist" className="me-4" />
-              </a>
+              </Link>
             </h6>
           </div>
           <div>

@@ -24,12 +24,12 @@ import "./styles.css";
 
 function App() {
   return (
-    <Container fluid="xl">
-      <NavBar />
-      <Row>
-        <Col />
-        <Col sm={8} m={6} style={{ paddingTop: "85px" }}>
-          <Router>
+    <Router>
+      <Container fluid="xl">
+        <NavBar />
+        <Row>
+          <Col />
+          <Col sm={8} m={6} style={{ paddingTop: "85px" }}>
             <Switch>
               <Route exact path="/" render={() => <Home />} />
               <Route
@@ -83,11 +83,11 @@ function App() {
                 render={(routerProps) => <UserShow {...routerProps} />}
               />
             </Switch>
-          </Router>
-        </Col>
-        <Col />
-      </Row>
-    </Container>
+          </Col>
+          <Col />
+        </Row>
+      </Container>
+    </Router>
   );
 }
 

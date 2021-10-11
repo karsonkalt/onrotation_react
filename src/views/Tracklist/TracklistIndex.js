@@ -3,6 +3,7 @@ import { Button } from "react-bootstrap";
 import TracklistContainer from "../../containers/TracklistContainer";
 import tracklists from "../../data/data";
 import IconText from "../../layout/global/IconText";
+import { Link } from "react-router-dom";
 
 class TracklistIndex extends Component {
   search = () => {
@@ -13,11 +14,11 @@ class TracklistIndex extends Component {
     return (
       <>
         <h4>Tracklist Index {this.search()}</h4>
-        <a href="/tracklists/new">
+        <Link to="/tracklists/new">
           <Button variant="primary" size="sm">
             <IconText icon="PlusCircleFill" text="Add" />
           </Button>
-        </a>
+        </Link>
         <TracklistContainer tracklists={tracklists} />
       </>
     );

@@ -5,6 +5,7 @@ import Search from "./Search";
 import NotificationButton from "./NotificationButton";
 import UserDropdown from "./UserDropdown";
 import LoginDropdown from "./LoginDropdown";
+import { Link } from "react-router-dom";
 
 import {
   fetchNotifications,
@@ -43,11 +44,18 @@ class NavBar extends Component {
         className="justify-content-between px-5 shadow-sm"
       >
         <div style={{ display: "flex" }}>
-          <Navbar.Brand href="/">OnRotation</Navbar.Brand>
+          <Navbar.Brand as={Link} to="/">
+            OnRotation
+          </Navbar.Brand>
 
           <Nav className="me-3">
-            <Nav.Link href="/tracklists">Tracklists</Nav.Link>
-            <Nav.Link href="/tracks">Tracks</Nav.Link>
+            <Nav.Link as={Link} to="/tracklists">
+              Tracklists
+            </Nav.Link>
+
+            <Nav.Link as={Link} to="/tracks">
+              Tracks
+            </Nav.Link>
           </Nav>
         </div>
 

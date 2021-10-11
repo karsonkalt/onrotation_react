@@ -5,6 +5,7 @@ import IconText from "../../layout/global/IconText";
 import TracklistCompletionBar from "../../components/TracklistCompletionBar";
 import VideoPlayer from "../../components/VideoPlayer";
 import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 class TracklistEdit extends Component {
   state = {
@@ -28,12 +29,12 @@ class TracklistEdit extends Component {
               />
             </h4>
             <h6 className="mb-2 text-muted" style={{ display: "flex" }}>
-              <a
-                href={`/artists/${this.props.id}`}
+              <Link
+                to={`/artists/${this.props.id}`}
                 className="clickable-subheader"
               >
                 <IconText icon="Person" text="Artist" className="me-4" />
-              </a>
+              </Link>
               <IconText
                 icon="CalendarEvent"
                 text="June 14, 2012"
@@ -42,11 +43,11 @@ class TracklistEdit extends Component {
             </h6>
           </div>
           <div>
-            <a href={`/tracklists/${this.props.match.params.id}/edit`}>
+            <Link to={`/tracklists/${this.props.match.params.id}/edit`}>
               <Button variant="outline-secondary me-3" size="sm">
                 <IconText icon="PencilSquare" text="Edit" />
               </Button>
-            </a>
+            </Link>
             <Button variant="outline-primary" size="sm">
               <IconText icon="Bookmark" text="Bookmark" />
             </Button>

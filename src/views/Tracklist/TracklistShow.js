@@ -6,6 +6,7 @@ import VideoPlayer from "../../components/VideoPlayer";
 import { Button } from "react-bootstrap";
 import { connect } from "react-redux";
 import { fetchTracklist } from "../../store/actions/tracklistActions";
+import { Link } from "react-router-dom";
 
 class TracklistShow extends Component {
   componentDidMount() {
@@ -36,8 +37,8 @@ class TracklistShow extends Component {
                 />
               </h4>
               <h6 className="mb-2 text-muted" style={{ display: "flex" }}>
-                <a
-                  href={`/artists/${this.props.tracklist.artist.id}`}
+                <Link
+                  to={`/artists/${this.props.tracklist.artist.id}`}
                   className="clickable-subheader"
                 >
                   <IconText
@@ -45,7 +46,7 @@ class TracklistShow extends Component {
                     text={this.props.tracklist.artist.name}
                     className="me-4"
                   />
-                </a>
+                </Link>
                 <IconText
                   icon="CalendarEvent"
                   text={this.props.tracklist.datePlayed}
@@ -54,11 +55,11 @@ class TracklistShow extends Component {
               </h6>
             </div>
             <div>
-              <a href={`/tracklists/${this.props.match.params.id}/edit`}>
+              <Link to={`/tracklists/${this.props.match.params.id}/edit`}>
                 <Button variant="outline-secondary me-3" size="sm">
                   <IconText icon="PencilSquare" text="Edit" />
                 </Button>
-              </a>
+              </Link>
               <Button variant="outline-primary" size="sm">
                 <IconText icon="Bookmark" text="Bookmark" />
               </Button>
