@@ -3,7 +3,7 @@ import TracklistTrackContainer from "../../containers/TracklistTrackContainer";
 import IconText from "../../layout/global/IconText";
 import TracklistCompletionBar from "../../components/TracklistCompletionBar";
 import VideoPlayer from "../../components/VideoPlayer";
-import { Button } from "react-bootstrap";
+import { Button, Spinner } from "react-bootstrap";
 import { connect } from "react-redux";
 import { fetchTracklist } from "../../store/actions/tracklistActions";
 import { Link } from "react-router-dom";
@@ -23,7 +23,13 @@ class TracklistShow extends Component {
 
   render() {
     if (this.props.loading === true) {
-      return <div>loading</div>;
+      return (
+        <Spinner
+          animation="border"
+          variant="primary"
+          style={{ margin: "0 50%" }}
+        />
+      );
     } else {
       return (
         <>

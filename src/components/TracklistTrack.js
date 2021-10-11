@@ -197,12 +197,7 @@ class TracklistTrack extends Component {
     return this.props.identifier ? (
       <Card.Footer className="text-muted" style={{ fontSize: "10px" }}>
         identified <TimeAgo date={this.props.identifiedDate} /> by{" "}
-        <Link
-          to={`/users/${this.props.identifier.id}`}
-          className="clickable-subheader"
-        >
-          {this.props.identifier.username}
-        </Link>
+        {this.props.identifier.username}
       </Card.Footer>
     ) : null;
   };

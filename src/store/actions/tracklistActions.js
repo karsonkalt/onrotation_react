@@ -112,6 +112,37 @@ const fetchTracks = () => {
   };
 };
 
+const fetchSubmitTracklist = (data) => {
+  return (dispatch) => {
+    dispatch({
+      type: "TRACKLIST_SUBMITTED",
+    });
+    fetch("http://localhost:3000/tracklists", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((resp) => resp.json())
+      .then((json) => {
+        if (json.errors) {
+          dispatch({
+            type: "TRACKLIST_SUBMISSION_FAILURE",
+          });
+        } else {
+          dispatch({
+            type: "TRACKLIST_SUBMISSION_SUCCESSFUL",
+            payload: json,
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+};
+
 export {
   fetchTracklists,
   fetchTrackTracklists,
@@ -119,4 +150,5 @@ export {
   fetchTracklist,
   fetchArtistTracks,
   fetchTracks,
+  fetchSubmitTracklist,
 };

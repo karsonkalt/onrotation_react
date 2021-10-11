@@ -1,7 +1,7 @@
 const initialState = {
   tracklists: [],
   tracks: [],
-  loading: false,
+  loading: true,
 };
 
 export default function indexReducer(state = initialState, action) {

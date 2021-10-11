@@ -5,6 +5,7 @@ import {
   fetchTrackTracklists,
   fetchArtistTracklists,
 } from "../store/actions/tracklistActions";
+import { Spinner } from "react-bootstrap";
 
 import Tracklist from "../components/Tracklist";
 
@@ -26,7 +27,17 @@ class TracklistContainer extends Component {
   };
 
   render() {
-    return this.renderTracklists();
+    if (this.props.loading) {
+      return (
+        <Spinner
+          animation="border"
+          variant="primary"
+          style={{ margin: "0 50%" }}
+        />
+      );
+    } else {
+      return this.renderTracklists();
+    }
   }
 }
 
