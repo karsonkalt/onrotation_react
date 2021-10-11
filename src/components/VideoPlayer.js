@@ -6,7 +6,10 @@ import ReactPlayer from "react-player";
 
 const VideoPlayer = ({ url, onProgress }) => {
   return (
-    <div className="player-wrapper mb-3" style={{ height: "400px" }}>
+    <div
+      className="player-wrapper mb-4 rounded "
+      style={{ height: "400px", overflow: "hidden" }}
+    >
       <ReactPlayer
         className="react-player"
         url={url}

@@ -10,7 +10,6 @@ import TracklistNew from "./views/Tracklist/TracklistNew";
 
 import TrackIndex from "./views/Track/TrackIndex";
 import TrackShow from "./views/Track/TrackShow";
-import TrackNew from "./views/Track/TrackNew";
 
 import ArtistIndex from "./views/Artist/ArtistIndex";
 import ArtistShow from "./views/Artist/ArtistShow";
@@ -51,11 +50,6 @@ function App() {
                 exact
                 path="/tracks"
                 render={(routerProps) => <TrackIndex {...routerProps} />}
-              />
-              <Route
-                exact
-                path="/tracks/new"
-                render={(routerProps) => <TrackNew {...routerProps} />}
               />
               <Route
                 exact

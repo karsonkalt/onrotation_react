@@ -132,7 +132,7 @@ const fetchSubmitTracklist = (data) => {
           });
         } else {
           dispatch({
-            type: "TRACKLIST_SUBMISSION_SUCCESSFUL",
+            type: "ADD_TRACKLIST",
             payload: json,
           });
         }

@@ -7,6 +7,7 @@ import { Button, Spinner } from "react-bootstrap";
 import { connect } from "react-redux";
 import { fetchTracklist } from "../../store/actions/tracklistActions";
 import { Link } from "react-router-dom";
+import BookmarkButton from "../../layout/global/BookmarkButton";
 
 class TracklistShow extends Component {
   componentDidMount() {
@@ -61,14 +62,7 @@ class TracklistShow extends Component {
               </h6>
             </div>
             <div>
-              <Link to={`/tracklists/${this.props.match.params.id}/edit`}>
-                <Button variant="outline-secondary me-3" size="sm">
-                  <IconText icon="PencilSquare" text="Edit" />
-                </Button>
-              </Link>
-              <Button variant="outline-primary" size="sm">
-                <IconText icon="Bookmark" text="Bookmark" />
-              </Button>
+              <BookmarkButton />
             </div>
           </div>
           <TracklistCompletionBar

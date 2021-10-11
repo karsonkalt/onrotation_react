@@ -20,9 +20,11 @@ import {
 import IconText from "../../layout/global/IconText";
 import { connect } from "react-redux";
 import { fetchSubmitTracklist } from "../../store/actions/tracklistActions";
+import { Redirect } from "react-router";
 
 class TracklistNew extends Component {
   state = {
+    redirect: false,
     name: "",
     artistName: "",
     datePlayed: "",
@@ -277,103 +279,121 @@ class TracklistNew extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     this.props.fetchSubmitTracklist(this.state);
+    this.setState({
+      redirect: true,
+    });
   };
 
   render() {
-    return (
-      <>
-        <h4>New Tracklist</h4>
-        <div
-          className="align-items-center justify-content-between "
-          style={{ display: "flex" }}
-        >
-          <Form style={{ width: "100%" }} onSubmit={this.handleSubmit}>
-            <Row>
-              <Col>
-                <InputGroup className="mb-2" size="sm">
-                  <InputGroup.Text>
-                    <MusicNoteList />
-                  </InputGroup.Text>
-                  <FormControl
-                    id="inlineFormInputGroup"
-                    placeholder="Tracklist name"
-                    value={this.state.name}
-                    onChange={this.handleTracklistNameChange}
-                  />
-                </InputGroup>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <InputGroup className="mb-2" size="sm">
-                  <InputGroup.Text>
-                    <Person />
-                  </InputGroup.Text>
-                  <FormControl
-                    id="inlineFormInputGroup"
-                    placeholder="Artist name"
-                    value={this.state.artistName}
-                    onChange={this.handleTracklistArtistChange}
-                  />
-                </InputGroup>
-              </Col>
-              <Col>
-                <InputGroup className="mb-2" size="sm">
-                  <InputGroup.Text>
-                    <CalendarEvent />
-                  </InputGroup.Text>
-                  <FormControl
-                    id="inlineFormInputGroup"
-                    placeholder="Date played"
-                    value={this.state.datePlayed}
-                    onChange={this.handleTracklistDatePlayedChange}
-                  />
-                </InputGroup>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <InputGroup className="mb-2" size="sm">
-                  <InputGroup.Text>
-                    <PlayBtn />
-                  </InputGroup.Text>
-                  <FormControl
-                    id="inlineFormInputGroup"
-                    placeholder="YouTube Link"
-                    value={this.state.youTubeLink}
-                    onChange={this.handleTracklistLinkChange}
-                  />
-                </InputGroup>
-              </Col>
-            </Row>
-            <h4 className="mt-4">Tracks</h4>
-            {this.renderTracks()}
-            <Button
-              variant="outline-primary"
-              size="sm"
-              className="mt-3"
-              onClick={this.handleAddTrackClick}
-            >
-              <IconText icon="PlusCircleFill" text="Add Track" />
-            </Button>
-            <Row className="mt-4">
-              <Col>
-                <Button
-                  variant="primary"
-                  size="sm"
-                  type="submit"
-                  style={{ width: "auto" }}
-                >
-                  Submit
-                </Button>
-              </Col>
-            </Row>
-          </Form>
-        </div>
-      </>
-    );
+    if (this.state.redirect) {
+      return <Redirect to={`/tracklists/${this.props.redirectId}`} />;
+    } else {
+      return (
+        <>
+          <h4 className="mb-3">
+            <IconText icon="MusicNoteList" text="New Tracklist" />
+          </h4>
+          <div
+            className="align-items-center justify-content-between "
+            style={{ display: "flex" }}
+          >
+            <Form style={{ width: "100%" }} onSubmit={this.handleSubmit}>
+              <Row>
+                <Col>
+                  <InputGroup className="mb-2" size="sm">
+                    <InputGroup.Text>
+                      <MusicNoteList />
+                    </InputGroup.Text>
+                    <FormControl
+                      id="inlineFormInputGroup"
+                      placeholder="Tracklist name"
+                      value={this.state.name}
+                      onChange={this.handleTracklistNameChange}
+                    />
+                  </InputGroup>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <InputGroup className="mb-2" size="sm">
+                    <InputGroup.Text>
+                      <Person />
+                    </InputGroup.Text>
+                    <FormControl
+                      id="inlineFormInputGroup"
+                      placeholder="Artist name"
+                      value={this.state.artistName}
+                      onChange={this.handleTracklistArtistChange}
+                    />
+                  </InputGroup>
+                </Col>
+                <Col>
+                  <InputGroup className="mb-2" size="sm">
+                    <InputGroup.Text>
+                      <CalendarEvent />
+                    </InputGroup.Text>
+                    <FormControl
+                      id="inlineFormInputGroup"
+                      placeholder="Date played"
+                      value={this.state.datePlayed}
+                      onChange={this.handleTracklistDatePlayedChange}
+                    />
+                  </InputGroup>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <InputGroup className="mb-2" size="sm">
+                    <InputGroup.Text>
+                      <PlayBtn />
+                    </InputGroup.Text>
+                    <FormControl
+                      id="inlineFormInputGroup"
+                      placeholder="YouTube Link"
+                      value={this.state.youTubeLink}
+                      onChange={this.handleTracklistLinkChange}
+                    />
+                  </InputGroup>
+                </Col>
+              </Row>
+              <h4 className="mt-4">
+                <IconText icon="MusicNote" text="Tracks" />
+              </h4>
+              {this.renderTracks()}
+              <Button
+                variant="outline-primary"
+                size="sm"
+                className="mt-3"
+                onClick={this.handleAddTrackClick}
+              >
+                <IconText icon="PlusCircleFill" text="Add Track" />
+              </Button>
+              <Row className="mt-4">
+                <Col>
+                  <Button
+                    variant="primary"
+                    size="sm"
+                    type="submit"
+                    style={{ width: "auto" }}
+                    className="mb-5"
+                  >
+                    <IconText icon="MusicNoteList" text="Submit Tracklist" />
+                  </Button>
+                </Col>
+              </Row>
+            </Form>
+          </div>
+        </>
+      );
+    }
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    redirectId: state.tracklistShowReducer.tracklist.id,
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -381,4 +401,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(TracklistNew);
+export default connect(mapStateToProps, mapDispatchToProps)(TracklistNew);
