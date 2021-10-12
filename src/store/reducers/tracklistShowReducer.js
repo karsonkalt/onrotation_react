@@ -54,8 +54,31 @@ export default function tracklistShowReducer(state = initialState, action) {
         loading: false,
       };
 
-    case "DELETE_TRACKLIST":
-      return state.filter((tracklist) => tracklist.id !== action.payload.id);
+    case "ADD_TRACK_SUGGESTION":
+      return {
+        ...state,
+        tracklist: {
+          ...state.tracklist,
+          tracks: [
+            ...state.tracklist.tracks.map((track) => {
+              if (track.id !== action.payload.tracklistTrackId) {
+                return track;
+              } else {
+                return {
+                  ...track,
+                  suggestedTrackIdentification: {
+                    suggestedName: action.payload.suggested_name,
+                    suggestedTrackIdentificationVotes:
+                      action.payload.suggested_track_identification_votes,
+                    identifier: action.payload.identifier,
+                    suggestedArtist: action.payload.suggested_artist,
+                  },
+                };
+              }
+            }),
+          ],
+        },
+      };
 
     default:
       return state;

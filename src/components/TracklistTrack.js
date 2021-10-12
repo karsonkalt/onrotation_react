@@ -203,7 +203,10 @@ class TracklistTrack extends Component {
 
   showCreateSuggestedTrackIdentificationForm = () => {
     return this.state.showForm ? (
-      <CreateSuggestedTrackIdentificationForm />
+      <CreateSuggestedTrackIdentificationForm
+        tracklistTrackId={this.props.id}
+        formToggle={this.handleIdentifyClick}
+      />
     ) : null;
   };
 

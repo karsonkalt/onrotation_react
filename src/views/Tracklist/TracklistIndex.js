@@ -1,7 +1,6 @@
 import { Component } from "react";
 import { Button } from "react-bootstrap";
 import TracklistContainer from "../../containers/TracklistContainer";
-import tracklists from "../../data/data";
 import IconText from "../../layout/global/IconText";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
@@ -24,7 +23,7 @@ class TracklistIndex extends Component {
             </Link>
           ) : null}
         </div>
-        <TracklistContainer tracklists={tracklists} />
+        <TracklistContainer />
       </>
     );
   }

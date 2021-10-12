@@ -162,6 +162,40 @@ const fetchSubmitTracklist = (data) => {
   };
 };
 
+const fetchSubmitTrackIdentification = (data) => {
+  return (dispatch) => {
+    dispatch({
+      type: "TRACK_IDENTIFICATION_SUBMITTED",
+    });
+    fetch("http://localhost:3000/suggested", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((resp) => resp.json())
+      .then((json) => {
+        if (json.errors) {
+          dispatch({
+            type: "TRACK_IDENTIFICATION_SUBMISSION_FAILURE",
+          });
+        } else {
+          dispatch({
+            type: "ADD_TRACK_SUGGESTION",
+            payload: {
+              ...json,
+              tracklistTrackId: data.tracklistTrackId,
+            },
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+};
+
 export {
   fetchTracklists,
   fetchTrackTracklists,
@@ -171,4 +205,5 @@ export {
   fetchTracks,
   fetchTrack,
   fetchSubmitTracklist,
+  fetchSubmitTrackIdentification,
 };
