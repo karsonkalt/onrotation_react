@@ -52,6 +52,21 @@ export default function indexReducer(state = initialState, action) {
         loading: false,
       };
 
+    case "ADD_TRACK":
+      return {
+        ...state,
+        tracks: [
+          {
+            id: action.payload.id,
+            artist: { ...action.payload.artist },
+            name: action.payload.name,
+            label: { ...action.payload.label },
+            dateCreated: action.payload.created_at,
+          },
+        ],
+        loading: false,
+      };
+
     default:
       return state;
   }

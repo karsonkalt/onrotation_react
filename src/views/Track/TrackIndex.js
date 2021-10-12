@@ -9,11 +9,6 @@ class TrackIndex extends Component {
     return (
       <>
         <h4>Track Index</h4>
-        <Link to="/tracks/new">
-          <Button variant="primary" size="sm">
-            <IconText icon="PlusCircleFill" text="Add" />
-          </Button>
-        </Link>
         <TrackContainer />
       </>
     );

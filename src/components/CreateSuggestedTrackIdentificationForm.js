@@ -23,6 +23,9 @@ class CreateSuggestedTrackIdentificationForm extends Component {
         >
           <Form style={{ width: "100%" }}>
             <Row>
+              <h6 className="mb-4">
+                <IconText icon="Lightbulb" text="Identify Track" />
+              </h6>
               <Col>
                 <InputGroup className="mb-2" size="sm">
                   <InputGroup.Text>
@@ -59,11 +62,10 @@ class CreateSuggestedTrackIdentificationForm extends Component {
                 </InputGroup>
               </Col>
             </Row>
-            <Row>
-              <Button variant="primary" type="submit">
-                Submit
-              </Button>
-            </Row>
+
+            <Button variant="warning" type="submit" size="sm" className="mt-3">
+              <IconText icon="CheckCircleFill" text="Submit Identification" />
+            </Button>
           </Form>
         </div>
       </div>

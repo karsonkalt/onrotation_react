@@ -2,17 +2,16 @@ import { Component } from "react";
 import TracklistContainer from "../../containers/TracklistContainer";
 import IconText from "../../layout/global/IconText";
 import TrackContainer from "../../containers/TrackContainer";
+import { connect } from "react-redux";
 
 class ArtistShow extends Component {
   render() {
     return (
       <>
         <h4>
-          <IconText
-            icon="Person"
-            iconPadding="me-2"
-            text={`Artist Show ${this.props.match.params.id}`}
-          />
+          {this.props.name !== null ? (
+            <IconText icon="Person" iconPadding="me-2" text={this.props.name} />
+          ) : null}
         </h4>
         <div className="mt-3">
           <h5>Tracklists</h5>
@@ -25,4 +24,16 @@ class ArtistShow extends Component {
   }
 }
 
-export default ArtistShow;
+const mapStateToProps = (state) => {
+  if (state.indexReducer.tracks[0]) {
+    return {
+      name: state.indexReducer.tracks[0].artist.name,
+    };
+  } else {
+    return {
+      name: "Loading...",
+    };
+  }
+};
+
+export default connect(mapStateToProps)(ArtistShow);

@@ -112,6 +112,25 @@ const fetchTracks = () => {
   };
 };
 
+const fetchTrack = (id) => {
+  return (dispatch) => {
+    dispatch({
+      type: "LOADING_TRACK",
+    });
+    fetch(`http://localhost:3000/tracks/${id}`)
+      .then((resp) => resp.json())
+      .then((json) => {
+        dispatch({
+          type: "ADD_TRACK",
+          payload: json,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+};
+
 const fetchSubmitTracklist = (data) => {
   return (dispatch) => {
     dispatch({
@@ -150,5 +169,6 @@ export {
   fetchTracklist,
   fetchArtistTracks,
   fetchTracks,
+  fetchTrack,
   fetchSubmitTracklist,
 };

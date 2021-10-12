@@ -36,7 +36,18 @@ class TracklistContainer extends Component {
         />
       );
     } else {
-      return this.renderTracklists();
+      if (this.props.tracklists[0]) {
+        return this.renderTracklists();
+      } else {
+        return (
+          <div
+            class="card p-3 mb-3"
+            style={{ border: "1px dashed #cccccc", color: "#969696" }}
+          >
+            No tracklists
+          </div>
+        );
+      }
     }
   }
 }
