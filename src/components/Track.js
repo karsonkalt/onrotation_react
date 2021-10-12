@@ -6,12 +6,7 @@ import IconText from "../layout/global/IconText";
 class Track extends Component {
   displayLabel = () => {
     return this.props.label.name ? (
-      <Link
-        to={`/labels/${this.props.label.id}`}
-        className="clickable-subheader"
-      >
-        <IconText icon="Vinyl" text={this.props.label.name} className="me-3" />
-      </Link>
+      <IconText icon="Vinyl" text={this.props.label.name} className="me-3" />
     ) : (
       <IconText
         icon="Vinyl"

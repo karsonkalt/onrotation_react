@@ -59,12 +59,7 @@ class TracklistTrack extends Component {
 
   displayLabel = () => {
     return this.props.label ? (
-      <Link
-        to={`/labels/${this.props.label.id}`}
-        className="clickable-subheader"
-      >
-        <IconText icon="Vinyl" text={this.props.label.name} className="me-3" />
-      </Link>
+      <IconText icon="Vinyl" text={this.props.label.name} className="me-3" />
     ) : (
       <IconText
         icon="Vinyl"
