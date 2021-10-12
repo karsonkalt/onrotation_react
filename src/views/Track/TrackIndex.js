@@ -8,7 +8,7 @@ class TrackIndex extends Component {
   render() {
     return (
       <>
-        <h4>Track Index</h4>
+        <h4>Tracks</h4>
         <TrackContainer />
       </>
     );

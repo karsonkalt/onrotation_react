@@ -6,15 +6,11 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 class TracklistIndex extends Component {
-  search = () => {
-    return this.props.location.search.substring(1);
-  };
-
   render() {
     return (
       <>
         <div className="d-flex justify-content-between">
-          <h4 className="mb-3">Tracklist Index {this.search()}</h4>
+          <h4 className="mb-3">Tracklists</h4>
           {this.props.loggedIn ? (
             <Link to="/tracklists/new">
               <Button variant="primary" size="sm">

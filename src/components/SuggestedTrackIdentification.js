@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { Card, Button } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import IconText from "../layout/global/IconText";
 
 class SuggestedTrackIdentification extends Component {
@@ -43,6 +43,7 @@ class SuggestedTrackIdentification extends Component {
               text={`${this.props.suggestedName}`}
               className="me-3"
             />
+
             {this.displayArtist()}
           </div>
           <div style={{ display: "flex" }}>

@@ -1,6 +1,7 @@
 import { Card, Button, Col, Row, Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import IconText from "../layout/global/IconText";
+import TracklistCompletionBar from "../components/TracklistCompletionBar";
 
 import guy_j_img from "../img/guy_j.jpeg";
 import khen_img from "../img/khen.jpeg";
@@ -92,6 +93,11 @@ function Home() {
             Watch Guy J on John Digweed's Transitions radio show. Broadcast
             across 45 countries to a staggering audience of 14 million.
           </Card.Text>
+          <TracklistCompletionBar
+            numIdentifiedTracks={11}
+            numTotalTracks={11}
+            className="mb-3"
+          />
           <Link to="/=tracklists/1">
             <Button variant="outline-primary" size="sm">
               <IconText icon="MusicNoteList" text="Tracklist Page" />
