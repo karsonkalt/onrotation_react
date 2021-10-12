@@ -18,7 +18,7 @@ class Track extends Component {
 
   render() {
     return (
-      <Card className={`mb-4 playable`}>
+      <Card className={`mb-4 playable shadow-sm`}>
         <div className={`d-flex align-items-center`}>
           <Card.Body>
             <Link
