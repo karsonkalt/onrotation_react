@@ -61,9 +61,7 @@ class TracklistShow extends Component {
                 />
               </h6>
             </div>
-            <div>
-              <BookmarkButton />
-            </div>
+            <div>{this.props.loggedIn ? <BookmarkButton /> : null}</div>
           </div>
           <TracklistCompletionBar
             numIdentifiedTracks={this.props.tracklist.numIdentifiedTracks}
@@ -94,6 +92,7 @@ const mapStateToProps = (state) => {
   return {
     tracklist: state.tracklistShowReducer.tracklist,
     loading: state.tracklistShowReducer.loading,
+    loggedIn: state.sessionReducer.loggedIn,
   };
 };
 

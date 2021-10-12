@@ -70,7 +70,6 @@ class TracklistNew extends Component {
                   onChange={(event) => {
                     this.handleTrackNameChange(event, index);
                   }}
-                  value={this.state.tracks[index].name}
                 >
                   <InputGroup.Text>
                     <MusicNote />
@@ -78,6 +77,7 @@ class TracklistNew extends Component {
                   <FormControl
                     id="inlineFormInputGroup"
                     placeholder="Track name"
+                    value={this.state.tracks[index].name}
                   />
                 </InputGroup>
               </Col>
@@ -88,7 +88,6 @@ class TracklistNew extends Component {
                   onChange={(event) => {
                     this.handleTrackCueTimeChange(event, index);
                   }}
-                  value={this.state.tracks[index].cueTime}
                 >
                   <InputGroup.Text>
                     <Clock />
@@ -96,6 +95,7 @@ class TracklistNew extends Component {
                   <FormControl
                     id="inlineFormInputGroup"
                     placeholder="Cue time"
+                    value={this.state.tracks[index].cueTime}
                   />
                 </InputGroup>
               </Col>
@@ -108,7 +108,7 @@ class TracklistNew extends Component {
                   onChange={(event) => {
                     this.handleTrackArtistChange(event, index);
                   }}
-                  value={this.state.tracks[index].cueTime}
+                  dfasdfads
                 >
                   <InputGroup.Text>
                     <Person />
@@ -116,6 +116,7 @@ class TracklistNew extends Component {
                   <FormControl
                     id="inlineFormInputGroup"
                     placeholder="Artist name"
+                    value={this.state.tracks[index].artistName}
                   />
                 </InputGroup>
               </Col>
@@ -126,7 +127,6 @@ class TracklistNew extends Component {
                   onChange={(event) => {
                     this.handleTrackLabelChange(event, index);
                   }}
-                  value={this.state.tracks[index].labelName}
                 >
                   <InputGroup.Text>
                     <Vinyl />
@@ -134,6 +134,7 @@ class TracklistNew extends Component {
                   <FormControl
                     id="inlineFormInputGroup"
                     placeholder="Label name"
+                    value={this.state.tracks[index].labelName}
                   />
                 </InputGroup>
               </Col>
@@ -222,22 +223,42 @@ class TracklistNew extends Component {
     });
   };
 
+  formatTime = (input) => {
+    const strippedInput = input.replace(":", "");
+    if (strippedInput.length === 2) {
+      return `${strippedInput.substring(0, 2)}:`;
+    } else if (strippedInput.length === 4) {
+      return `${strippedInput.substring(0, 2)}:${strippedInput.substring(
+        2,
+        4
+      )}:`;
+    } else {
+      return input.substring(0, 8);
+    }
+  };
+
   handleTrackCueTimeChange = (event, index) => {
-    this.setState({
-      ...this.state,
-      tracks: [
-        ...this.state.tracks.map((track, tIndex) => {
-          if (tIndex === index) {
-            return {
-              ...track,
-              cueTime: event.target.value,
-            };
-          } else {
-            return track;
-          }
-        }),
-      ],
-    });
+    const regex = /^[0-9\b]+$/;
+    if (
+      event.target.value === "" ||
+      regex.test(event.target.value.replaceAll(":", ""))
+    ) {
+      this.setState({
+        ...this.state,
+        tracks: [
+          ...this.state.tracks.map((track, tIndex) => {
+            if (tIndex === index) {
+              return {
+                ...track,
+                cueTime: this.formatTime(event.target.value),
+              };
+            } else {
+              return track;
+            }
+          }),
+        ],
+      });
+    }
   };
 
   handleTrackArtistChange = (event, index) => {
