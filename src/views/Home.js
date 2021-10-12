@@ -1,12 +1,11 @@
 import TracklistContainer from "../containers/TracklistContainer";
-import tracklists from "../data/data";
 
 function Home() {
   return (
     <>
       <h4>Homepage</h4>
+      <p>OnRotation is a page where blah blah blah.</p>
       <TracklistContainer />
-      {/* <TracklistContainer tracklists={tracklists} /> */}
     </>
   );
 }

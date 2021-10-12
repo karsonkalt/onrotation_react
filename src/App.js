@@ -14,10 +14,14 @@ import TrackShow from "./views/Track/TrackShow";
 import ArtistIndex from "./views/Artist/ArtistIndex";
 import ArtistShow from "./views/Artist/ArtistShow";
 
-import UserIndex from "./views/User/UserIndex";
-import UserShow from "./views/User/UserShow";
+import NotFound from "./views/NotFound";
 
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
 
 import "./styles.css";
 
@@ -66,16 +70,8 @@ function App() {
                 path="/artists/:id"
                 render={(routerProps) => <ArtistShow {...routerProps} />}
               />
-              <Route
-                exact
-                path="/users"
-                render={(routerProps) => <UserIndex {...routerProps} />}
-              />
-              <Route
-                exact
-                path="/users/:id"
-                render={(routerProps) => <UserShow {...routerProps} />}
-              />
+              <Route exact path="/404" render={(routerProps) => <NotFound />} />
+              <Redirect to="/404" />
             </Switch>
           </Col>
           <Col />

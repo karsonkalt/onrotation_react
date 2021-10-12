@@ -96,6 +96,9 @@ class TracklistNew extends Component {
                     id="inlineFormInputGroup"
                     placeholder="Cue time"
                     value={this.state.tracks[index].cueTime}
+                    required
+                    pattern=".{8,}"
+                    title="Cue time must be in 'HH:MM:SS' format."
                   />
                 </InputGroup>
               </Col>
@@ -108,7 +111,6 @@ class TracklistNew extends Component {
                   onChange={(event) => {
                     this.handleTrackArtistChange(event, index);
                   }}
-                  dfasdfads
                 >
                   <InputGroup.Text>
                     <Person />
@@ -330,6 +332,7 @@ class TracklistNew extends Component {
                       placeholder="Tracklist name"
                       value={this.state.name}
                       onChange={this.handleTracklistNameChange}
+                      required
                     />
                   </InputGroup>
                 </Col>
@@ -345,6 +348,7 @@ class TracklistNew extends Component {
                       placeholder="Artist name"
                       value={this.state.artistName}
                       onChange={this.handleTracklistArtistChange}
+                      required
                     />
                   </InputGroup>
                 </Col>
@@ -355,9 +359,11 @@ class TracklistNew extends Component {
                     </InputGroup.Text>
                     <FormControl
                       id="inlineFormInputGroup"
+                      type="date"
                       placeholder="Date played"
                       value={this.state.datePlayed}
                       onChange={this.handleTracklistDatePlayedChange}
+                      required
                     />
                   </InputGroup>
                 </Col>
@@ -373,6 +379,8 @@ class TracklistNew extends Component {
                       placeholder="YouTube Link"
                       value={this.state.youTubeLink}
                       onChange={this.handleTracklistLinkChange}
+                      type="url"
+                      required
                     />
                   </InputGroup>
                 </Col>
@@ -380,6 +388,14 @@ class TracklistNew extends Component {
               <h4 className="mt-4">
                 <IconText icon="MusicNote" text="Tracks" />
               </h4>
+              <ul>
+                <li>All tracks must have a cue time.</li>
+                <li>
+                  If the track is unknown, leave all fields except cue time
+                  blank.
+                </li>
+                <li>If a track is unreleased, leave the label blank.</li>
+              </ul>
               {this.renderTracks()}
               <Button
                 variant="outline-primary"
