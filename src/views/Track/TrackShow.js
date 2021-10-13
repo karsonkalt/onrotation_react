@@ -1,7 +1,6 @@
 import { Component } from "react";
 import IconText from "../../layout/global/IconText";
 import TracklistContainer from "../../containers/TracklistContainer";
-import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchTrack } from "../../store/actions/tracklistActions";

@@ -25,6 +25,7 @@ class TrackContainer extends Component {
             label={label}
             id={id}
             identifiedDate={identifiedDate}
+            key={id}
           />
         );
       }

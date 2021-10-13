@@ -38,6 +38,7 @@ class TracklistTrackContainer extends Component {
             suggestedTrackIdentification={suggestedTrackIdentification}
             identifiedDate={identifiedDate}
             playedSeconds={this.props.playedSeconds}
+            key={id}
           />
         );
       }

@@ -1,7 +1,6 @@
 import { Navbar, Nav } from "react-bootstrap";
 import { Component } from "react";
 import { connect } from "react-redux";
-import Search from "./Search";
 import NotificationButton from "./NotificationButton";
 import UserDropdown from "./UserDropdown";
 import LoginDropdown from "./LoginDropdown";
@@ -58,8 +57,6 @@ class NavBar extends Component {
             </Nav.Link>
           </Nav>
         </div>
-
-        {/* <Search /> */}
 
         <Nav className="ms-3">
           {this.renderNotificationsIfLoggedIn()}

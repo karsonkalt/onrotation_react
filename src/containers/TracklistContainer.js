@@ -22,7 +22,7 @@ class TracklistContainer extends Component {
 
   renderTracklists = () => {
     return this.props.tracklists.map((tracklist) => {
-      return <Tracklist tracklist={tracklist} />;
+      return <Tracklist tracklist={tracklist} key={tracklist.id} />;
     });
   };
 
@@ -41,7 +41,7 @@ class TracklistContainer extends Component {
       } else {
         return (
           <div
-            class="card p-3 mb-3"
+            className="card p-3 mb-3"
             style={{ border: "1px dashed #cccccc", color: "#969696" }}
           >
             No tracklists

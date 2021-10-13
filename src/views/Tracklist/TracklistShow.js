@@ -3,7 +3,7 @@ import TracklistTrackContainer from "../../containers/TracklistTrackContainer";
 import IconText from "../../layout/global/IconText";
 import TracklistCompletionBar from "../../components/TracklistCompletionBar";
 import VideoPlayer from "../../components/VideoPlayer";
-import { Button, Spinner } from "react-bootstrap";
+import { Spinner } from "react-bootstrap";
 import { connect } from "react-redux";
 import { fetchTracklist } from "../../store/actions/tracklistActions";
 import { Link } from "react-router-dom";
