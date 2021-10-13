@@ -1,70 +1,57 @@
-# Getting Started with Create React App
+# OnRotation Server
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![GitHub repo size](https://img.shields.io/github/repo-size/karsonkalt/onrotation_server)
+![GitHub last commit](https://img.shields.io/github/last-commit/karsonkalt/onrotation_server)
+![Twitter Follow](https://img.shields.io/twitter/follow/karsonkalt?style=social)
 
-## Available Scripts
+![Gif of GamePage being rendered in a browser](https://github.com/karsonkalt/onrotation_react/blob/master/README_assets/overview.gif?raw=true)
 
-In the project directory, you can run:
+OnRotation is split into two repositories, frontend and backend:
 
-### `yarn start`
+- Frontend: [github.com/karsonkalt/onrotation_react](https://github.com/karsonkalt/onrotation_react)
+- Backend: [github.com/karsonkalt/onrotation_server](https://github.com/karsonkalt/onrotation_server)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Features
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- User login
+- Add a tracklist, tracklist_tracks tracks, artists, and labels
+- Enter YouTube video to follow along using cue times
+- Enter identification suggestions for unknown tracks
+- Vote on track identificaitons submitted by other users
+- Bookmark tracks to receive a notification once a correct identification has been approved
+- Mark notifications as read
 
-### `yarn test`
+## Run locally
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To get started with OnRotation, run `npm i --save` from the command line to install all necessary packages. After dependencies have been installed run `npm s` from the console to start serving the site to `http://localhost:3001/`. You can then log in with your own information or view a seed account by viewing the User database and selecting a User email and entering the seed password `password`.
 
-### `yarn build`
+## Contributing to OnRotation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To contribute to OnRotation, follow these steps:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Fork this repository.
+2. Create a branch: `git checkout -b <branch_name>`.
+3. Make your changes and commit them: `git commit -m '<commit_message>'`
+4. Push to the original branch: `git push`
+5. Create the pull request.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Alternatively see the GitHub documentation on [creating a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
 
-### `yarn eject`
+## Contact
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+If you want to contact me you can reach me on Twitter at [@karsonkalt](http://www.twitter.com/karsonkalt)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Licensed with BSD 2-Clause “Simplified” License
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+BSD 2-Clause License
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Copyright (c) [2021], [karsonkalt]
+All rights reserved.
 
-## Learn More
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
