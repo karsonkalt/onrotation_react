@@ -30,4 +30,12 @@ const fetchLogin = (data) => {
   };
 };
 
-export { fetchLogin };
+const logout = () => {
+  return (dispatch) => {
+    dispatch({
+      type: "LOGOUT",
+    });
+  };
+};
+
+export { fetchLogin, logout };
